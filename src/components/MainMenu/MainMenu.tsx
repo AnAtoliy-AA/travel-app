@@ -20,6 +20,7 @@ const MainMenu: React.FC = (props: any) => {
       MainMenu Component
       <>
         {props.countryInfoList.map((c: any) => {
+          const countryInfo = c.countryFullInfo.countryInfo[props.activeLanguage.activeLanguage];
           return (
             <div
               key={c.country}
@@ -28,9 +29,10 @@ const MainMenu: React.FC = (props: any) => {
               }}
             >
               <NavLink to="/country" style={{ textDecoration: "none" }}>
-                <span>{c.country}</span>
-                <span>{c.countryInfo.capital}</span>
-                <span>{c.countryInfo.countryInfo}</span>
+                <img className="country-flag" src={c.countryFullInfo.flag} alt="flag"/>
+                <span>{countryInfo.countryName}</span>
+                <span>{countryInfo.capital}</span>
+                <span>{countryInfo.countryInfo}</span>
               </NavLink>
             </div>
           );
@@ -40,11 +42,13 @@ const MainMenu: React.FC = (props: any) => {
   );
 };
 let mapStateToProps = (state: {
-  countryList: { countryInfoList: any; activeCountry: any };
+  countryList: { countryInfoList: any; activeCountry: any};
+  activeLanguage: any 
 }) => {
   return {
     countryInfoList: state.countryList.countryInfoList,
     activeCountry: state.countryList.activeCountry,
+    activeLanguage: state.activeLanguage
   };
 };
 
