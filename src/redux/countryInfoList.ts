@@ -16,14 +16,14 @@ export const defaultcountryInfoList = [
             "Egypt is a large country, but a large portion of it is desert. Most people (95% of Egypt's total people) live in areas around the coast of the Mediterranean Sea and along the Nile River. This includes the cities of Cairo, Alexandria, Aswan, and Port Said. Not many people live in the desert.",
           attractions: [
             {
-              image: "some image1",
-              name: "some name1",
-              description: "some description1",
+              image: "https://www.planetware.com/photos-large/EGY/egypt-cairo-pyramids-of-giza.jpg",
+              name: "Pyramids of Giza",
+              description: "The last surviving of the Seven Wonders of the Ancient World, the Pyramids of Giza are one of the world's most recognizable landmarks. Built as tombs for the mighty Pharaohs and guarded by the enigmatic Sphinx, Giza's pyramid complex has awed travelers down through the ages and had archaeologists (and a fair few conspiracy theorists) scratching their heads over how they were built for centuries.Today, these megalithic memorials to dead kings are still as wondrous a sight as they ever were. An undeniable highlight of any Egypt trip, Giza's pyramids should not be missed",
             },
             {
-              image: "some image2",
-              name: "some name2",
-              description: "some description2",
+              image: "https://www.planetware.com/photos-large/EGY/egypt-luxor-karnak-temple-at-night.jpg",
+              name: "Luxor's Karnak Temple and the Valley of the Kings",
+              description: "Famed for the Valley of the Kings, Karnak Temple, and the Memorial Temple of Hatshepsut, the Nile-side town of Luxor in Upper Egypt has a glut of tourist attractions. This is ancient Thebes, power base of the New Kingdom pharaohs, and home to more sights than most can see on one visit.While the East Bank brims with vibrant souk action, the quieter West Bank is home to a bundle of tombs and temples that has been called the biggest open-air museum in the world. Spend a few days here exploring the colorful wall art of the tombs and gazing in awe at the colossal columns in the temples, and you'll see why Luxor continues to fascinate historians and archaeologists.",
             },
             {
               image: "some image3",
@@ -54,14 +54,14 @@ export const defaultcountryInfoList = [
           aboutCountry: "Египет - большая страна, но большая часть ее - пустыня. Большинство людей (95% всего населения Египта) живут в районах вдоль побережья Средиземного моря и вдоль реки Нил. Сюда входят города Каир, Александрия, Асуан и Порт-Саид. В пустыне живет не так много людей.",
           attractions: [
             {
-              image: "some image1_RU",
-              name: "some name1_RU",
-              description: "some description1_RU",
+              image: "https://www.planetware.com/photos-large/EGY/egypt-cairo-pyramids-of-giza.jpg",
+              name: "Пирамиды Гизы",
+              description: "Пирамиды Гизы, последние сохранившиеся из семи чудес древнего мира, являются одной из самых узнаваемых достопримечательностей в мире. Построенный как гробницы могущественных фараонов и охраняемый загадочным Сфинксом, комплекс пирамид Гизы внушал страх путешественникам на протяжении веков и заставлял археологов (и немало сторонников теории заговора) ломать голову над тем, как они были построены на протяжении веков.Сегодня эти мегалитические памятники мертвым королям по-прежнему остаются таким же чудесным зрелищем, как и раньше. Неоспоримая изюминка любого путешествия по Египту, пирамиды Гизы, которые нельзя пропустить.",
             },
             {
-              image: "some image2_RU",
-              name: "some name2_RU",
-              description: "some description2_RU",
+              image: "https://www.planetware.com/photos-large/EGY/egypt-luxor-karnak-temple-at-night.jpg",
+              name: "Долина фараонов (г. Луксор)",
+              description: "Известный Долиной царей, Карнакским храмом и Мемориальным храмом Хатшепсут, город Луксор на берегу Нила в Верхнем Египте имеет изобилие туристических достопримечательностей. Это древние Фивы, опора фараонов Нового царства, где находится больше достопримечательностей, чем многие могут увидеть за одно посещение.В то время как на Восточном берегу кипит оживленная ярмарка, на более тихом Западном берегу находится множество гробниц и храмов, которые называют крупнейшим музеем под открытым небом в мире. Проведите здесь несколько дней, исследуя красочные настенные рисунки гробниц и с трепетом глядя на колоссальные колонны в храмах, и вы поймете, почему Луксор продолжает очаровывать историков и археологов.",
             },
             {
               image: "some image3_RU",

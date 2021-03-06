@@ -8,21 +8,7 @@ const ACTION_CONST = {
 
 let initialState = {
     countryInfoList: defaultcountryInfoList,
-    activeCountry: {
-        country: '',
-        // countryInfo: {
-        //     _id: 0,
-        //     iso2: '',
-        //     iso3: '',
-        //     lat: 0,
-        //     long: 0,
-        //     flag: '',
-        //     capital: '',
-        //     countryInfo: '',
-        //     attractions: [],
-        //     video: '',
-        // },
-    },
+    activeCountry: defaultcountryInfoList[0],
     isCountrySelected: false,
 }
 
