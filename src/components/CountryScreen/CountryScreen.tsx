@@ -1,5 +1,7 @@
 import "./CountryScreen.scss";
 
+import { AttractionDescription, Country } from "../../shared/interfaces";
+
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { connect } from "react-redux";
@@ -16,7 +18,7 @@ const CountryScreen: React.FC = (props: any) => {
       <span>{activeCountryInfo.capital}</span>
       <span>{activeCountryInfo.aboutCountry}</span>
       //TODO SLIDER
-      {activeCountryInfo.attractions.map((el: any) => {
+      {activeCountryInfo.attractions.map((el: AttractionDescription) => {
         return (
           <div key={el.name}>
             <span> {el.name}</span>
@@ -33,7 +35,7 @@ const CountryScreen: React.FC = (props: any) => {
 };
 
 let mapStateToProps = (state: {
-  countryList: { countryInfoList: any; activeCountry: any };
+  countryList: { countryInfoList: Country[]; activeCountry: Country };
   activeLanguage: any;
 }) => {
   return {

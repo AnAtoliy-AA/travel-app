@@ -6,21 +6,24 @@ import {
   setIsCountrySelected,
 } from "../../redux/countryList-reducer";
 
+import { Country } from "../../shared/interfaces";
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { connect } from "react-redux";
 
 const MainMenu: React.FC = (props: any) => {
-  const changeActiveCountry = (country: any) => {
-    console.log(country);
+  const changeActiveCountry = (country: Country) => {
     props.setActiveCountry(country);
   };
+
+  const activeCountry: string = props.activeLanguage.activeLanguage;
   return (
     <div className="MainMenu">
       MainMenu Component
       <>
         {props.countryInfoList.map((c: any) => {
-          const countryInfo = c.countryFullInfo.countryInfo[props.activeLanguage.activeLanguage];
+          console.log(typeof c)
+          const countryInfo = c.countryFullInfo.countryInfo[activeCountry];
           return (
             <div
               key={c.country}
@@ -42,7 +45,7 @@ const MainMenu: React.FC = (props: any) => {
   );
 };
 let mapStateToProps = (state: {
-  countryList: { countryInfoList: any; activeCountry: any};
+  countryList: { countryInfoList: Country[]; activeCountry: Country};
   activeLanguage: any 
 }) => {
   return {
