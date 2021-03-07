@@ -1,0 +1,11 @@
+.carousel-countainer{
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  width: 1200px;
+}
+.slick-arrow{
+  &::before{
+    color: black;
+  }
+}

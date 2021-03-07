@@ -1,8 +1,9 @@
-import "./CountryScreen.scss";
+import './CountryScreen.scss';
 
-import { NavLink } from "react-router-dom";
-import React from "react";
-import { connect } from "react-redux";
+import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { connect } from 'react-redux';
+import CarouselLists from '../CarouselLists/CarouselLists';
 
 const CountryScreen: React.FC = (props: any) => {
   const activeCountryInfo =
@@ -16,16 +17,17 @@ const CountryScreen: React.FC = (props: any) => {
       <span>{activeCountryInfo.capital}</span>
       <span>{activeCountryInfo.aboutCountry}</span>
       //TODO SLIDER
-      {activeCountryInfo.attractions.map((el: any) => {
+      {/* {activeCountryInfo.attractions.map((el: any) => {
         return (
           <div key={el.name}>
             <span> {el.name}</span>
             <img src={el.image} alt={el.name} />
             <span>{el.description}</span>
-           </div>
-        )
-      })}
-      <NavLink to="/" style={{ textDecoration: "none" }}>
+          </div>
+        );
+      })} */}
+      <CarouselLists attractions={activeCountryInfo.attractions} />
+      <NavLink to="/" style={{ textDecoration: 'none' }}>
         RETURN BACK
       </NavLink>
     </div>
