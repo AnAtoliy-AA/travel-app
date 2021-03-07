@@ -1,7 +1,7 @@
-import "./CountryScreen.scss";
+import './CountryScreen.scss';
 
-import { AttractionDescription, Country } from "../../shared/interfaces";
-
+import CarouselLists from '../CarouselLists/CarouselLists';
+import { Country } from "../../shared/interfaces";
 import { NavLink } from "react-router-dom";
 import React from "react";
 import { connect } from "react-redux";
@@ -17,17 +17,8 @@ const CountryScreen: React.FC = (props: any) => {
       <span>{activeCountryInfo.countryName}</span>
       <span>{activeCountryInfo.capital}</span>
       <span>{activeCountryInfo.aboutCountry}</span>
-      //TODO SLIDER
-      {activeCountryInfo.attractions.map((el: AttractionDescription) => {
-        return (
-          <div key={el.name}>
-            <span> {el.name}</span>
-            <img src={el.image} alt={el.name} />
-            <span>{el.description}</span>
-           </div>
-        )
-      })}
-      <NavLink to="/" style={{ textDecoration: "none" }}>
+      <CarouselLists attractions={activeCountryInfo.attractions} />
+      <NavLink to="/" style={{ textDecoration: 'none' }}>
         RETURN BACK
       </NavLink>
     </div>
