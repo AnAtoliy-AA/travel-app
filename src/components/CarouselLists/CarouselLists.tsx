@@ -15,7 +15,7 @@ const CarouselLists: React.FC<TProps> = ({ attractions }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 500,
+    speed: 750,
     slidesToShow: 3,
     slidesToScroll: 1,
   };
@@ -23,10 +23,10 @@ const CarouselLists: React.FC<TProps> = ({ attractions }) => {
   const renderSlides = () =>
     attractions.map(
       (item: { name: string; image: string; description: string }) => (
-        <div key={item.name}>
-          <span> {item.name}</span>
+        <div key={item.name} className="slide">
+          <h3> {item.name}</h3>
           <img src={item.image} alt={item.name} />
-          <span>{item.description}</span>
+          <p>{item.description}</p>
         </div>
       )
     );

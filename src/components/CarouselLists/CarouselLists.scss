@@ -3,6 +3,24 @@
   padding: 0;
   box-sizing: border-box;
   width: 1200px;
+  p{
+    height: 120px;
+    overflow-y: hidden;
+    line-height: 20px;
+    position: relative;
+    &::after{
+      content: '. . .';
+      position: absolute;
+      width: 60px;
+      height: 20px;
+      background: linear-gradient(269.76deg, #FFFFFF 62.83%, rgba(255, 255, 255, 0) 145.7%);
+      bottom: 0;
+      right: 1px;
+    }
+  }
+}
+.slide{
+  cursor: pointer;
 }
 .slick-arrow{
   &::before{
