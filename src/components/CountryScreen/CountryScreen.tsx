@@ -1,10 +1,13 @@
 import './CountryScreen.scss';
 
 import CarouselLists from '../CarouselLists/CarouselLists';
-import { Country } from "../../shared/interfaces";
-import { NavLink } from "react-router-dom";
-import React from "react";
-import { connect } from "react-redux";
+import { Country } from '../../shared/interfaces';
+import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { connect } from 'react-redux';
+import Widget from '../Widget/Widget';
+import Map from '../Map/Map';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 const CountryScreen: React.FC = (props: any) => {
   const activeCountryInfo =
@@ -17,9 +20,9 @@ const CountryScreen: React.FC = (props: any) => {
       <span>{activeCountryInfo.countryName}</span>
       <span>{activeCountryInfo.capital}</span>
       <span>{activeCountryInfo.aboutCountry}</span>
-      <a href={activeCountryInfo.video} target="_blank" rel="noreferrer">
-        video
-      </a>
+      <VideoPlayer source={activeCountryInfo.video} />
+      <Widget />
+      <Map />
       <CarouselLists attractions={activeCountryInfo.attractions} />
       <NavLink to="/" style={{ textDecoration: 'none' }}>
         RETURN BACK
