@@ -1,9 +1,10 @@
 import './CountryScreen.scss';
 
-import { NavLink } from 'react-router-dom';
-import React from 'react';
-import { connect } from 'react-redux';
 import CarouselLists from '../CarouselLists/CarouselLists';
+import { Country } from "../../shared/interfaces";
+import { NavLink } from "react-router-dom";
+import React from "react";
+import { connect } from "react-redux";
 
 const CountryScreen: React.FC = (props: any) => {
   const activeCountryInfo =
@@ -28,7 +29,7 @@ const CountryScreen: React.FC = (props: any) => {
 };
 
 let mapStateToProps = (state: {
-  countryList: { countryInfoList: any; activeCountry: any };
+  countryList: { countryInfoList: Country[]; activeCountry: Country };
   activeLanguage: any;
 }) => {
   return {

@@ -10,6 +10,14 @@ let reducers = combineReducers({
     activeLanguage: languageReducer,
 })
 
-let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunkMiddleware)));
+let initialState = {};
+
+let store = createStore(reducers,
+    localStorage.reduxState ? JSON.parse(localStorage.reduxState) : initialState,
+    composeWithDevTools(applyMiddleware(thunkMiddleware)));
+
+    store.subscribe(
+        () => (localStorage.reduxState = JSON.stringify(store.getState()))
+      );
 
 export default store;
