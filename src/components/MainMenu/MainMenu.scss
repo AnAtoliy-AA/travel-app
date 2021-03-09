@@ -1,6 +1,34 @@
+@import "../../styles/index.scss";
 .MainMenu {
-
+    
     .country-flag {
         max-width: 40px;
+    }
+
+    .cards__container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .main__country_card {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $border-color;
+        border-radius: 1em;
+        margin: 1vh 1vw;
+        padding: 1vh 1vw;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        max-width: 25vw;
+        height: 30vh;
+    }
+
+    .country__name{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .country__image {
+        max-width: 20vw;
+        border-radius: 0 1em 1em 1em;
     }
 }

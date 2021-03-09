@@ -1,5 +1,6 @@
 import "./MainMenu.scss";
 
+import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
 import {
   setActiveCountry,
   setCountriesInfoData,
@@ -19,10 +20,9 @@ const MainMenu: React.FC = (props: any) => {
   const activeCountry: string = props.activeLanguage.activeLanguage;
   return (
     <div className="MainMenu">
-      MainMenu Component
-      <>
+      <input type="text" />
+      <div className="cards__container">
         {props.countryInfoList.map((c: any) => {
-          console.log(typeof c)
           const countryInfo = c.countryFullInfo.countryInfo[activeCountry];
           return (
             <div
@@ -32,26 +32,47 @@ const MainMenu: React.FC = (props: any) => {
               }}
             >
               <NavLink to="/country" style={{ textDecoration: "none" }}>
-                <img className="country-flag" src={c.countryFullInfo.flag} alt="flag"/>
-                <span>{countryInfo.countryName}</span>
-                <span>{countryInfo.capital}</span>
-                <span>{countryInfo.countryInfo}</span>
+                <div className="main__country_card">
+                  <div className="country__name">
+                    <img
+                      className="country-flag"
+                      src={c.countryFullInfo.flag}
+                      alt="flag"
+                    />
+                    <span>{countryInfo.countryName}</span>
+                  </div>
+                  <img
+                    src={countryInfo.attractions[0].image}
+                    alt="country"
+                    className="country__image"
+                  />
+                  <span>
+                    {activeCountry === LANGUAGE_CONFIG.native &&
+                      WORDS_CONFIG.CAPITAL.native}
+                    {activeCountry === LANGUAGE_CONFIG.foreign &&
+                      WORDS_CONFIG.CAPITAL.foreign}
+                    {activeCountry === LANGUAGE_CONFIG.additional &&
+                      WORDS_CONFIG.CAPITAL.additional}
+                    : {countryInfo.capital}
+                  </span>
+                  {/* <span>{countryInfo.aboutCountry}</span> */}
+                </div>
               </NavLink>
             </div>
           );
         })}
-      </>
+      </div>
     </div>
   );
 };
 let mapStateToProps = (state: {
-  countryList: { countryInfoList: Country[]; activeCountry: Country};
-  activeLanguage: any 
+  countryList: { countryInfoList: Country[]; activeCountry: Country };
+  activeLanguage: any;
 }) => {
   return {
     countryInfoList: state.countryList.countryInfoList,
     activeCountry: state.countryList.activeCountry,
-    activeLanguage: state.activeLanguage
+    activeLanguage: state.activeLanguage,
   };
 };
 
