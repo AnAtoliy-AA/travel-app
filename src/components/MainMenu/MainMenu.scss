@@ -1,6 +1,11 @@
 @import "../../styles/index.scss";
+
 .MainMenu {
-    
+
+    .search__input {
+        width: 40vw;
+    }
+
     .country-flag {
         max-width: 40px;
     }
@@ -17,12 +22,12 @@
         border-radius: 1em;
         margin: 1vh 1vw;
         padding: 1vh 1vw;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         max-width: 25vw;
         height: 30vh;
     }
 
-    .country__name{
+    .country__name {
         display: flex;
         justify-content: space-between;
     }
