@@ -17,6 +17,9 @@ const CountryScreen: React.FC = (props: any) => {
       <span>{activeCountryInfo.countryName}</span>
       <span>{activeCountryInfo.capital}</span>
       <span>{activeCountryInfo.aboutCountry}</span>
+      <a href={activeCountryInfo.video} target="_blank" rel="noreferrer">
+        video
+      </a>
       <CarouselLists attractions={activeCountryInfo.attractions} />
       <NavLink to="/" style={{ textDecoration: 'none' }}>
         RETURN BACK
