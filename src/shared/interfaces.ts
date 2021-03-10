@@ -28,3 +28,15 @@ export interface AttractionDescription {
   name: string;
   description: string;
 }
+export interface WeatherDescritpion {
+  temp: string;
+  wind: string;
+  humidity: string;
+  weather: {
+    id: string;
+    main: string;
+    icon: string;
+    description: string;
+  },
+}
+
