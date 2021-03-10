@@ -1,11 +1,13 @@
 import {APIWEATHERURL, APIWEATHERKEY, APITIMEZONE, APITIMEKEY} from './api';
 
 const getWeather=async (city:string='Moskaw')=> {
-  const result=await fetch(`${APIWEATHERURL}${city}&appid=${APIWEATHERKEY}`)
+  const result=await fetch(`${APIWEATHERURL}${city}&appid=${APIWEATHERKEY}&lang=en`)
     .then((resp)=> {
       return resp.json();
     })
-    .then((data:any)=> data)
+    .then((data:any)=> {
+      return data
+    })
     .catch(function (error) {
       console.log("Something went wrong", error);
       return error

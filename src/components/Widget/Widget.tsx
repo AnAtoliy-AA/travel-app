@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Widget.scss';
 import { getWeather, getTime } from '../../services/fetchAPI';
+import { getIcon } from '../../services/getIcons';
 import { WeatherDescritpion, TimeDescritpion } from '../../shared/interfaces';
 
 type TProps = {
@@ -65,9 +66,15 @@ const Widget: React.FC<TProps> = ({ country = 'Egypt', capital = 'Kair' }) => {
     const { temp, wind, weather, humidity } = dataWeather;
     const tempC = Math.round(+temp - 273);
 
+    const weatherImageIcon = () => {
+      return <img src={getIcon(weather.icon)} alt={weather.description} />;
+    };
+
     return (
       <div>
+        {weatherImageIcon()}
         <p>
+          {/* <img src={imageIcon} alt={weather.description} /> */}
           Temperature <span>{tempC} &deg;C</span>
           <br />
           Wind <span>{wind} m/s</span>
