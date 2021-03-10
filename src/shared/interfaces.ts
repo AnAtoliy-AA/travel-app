@@ -40,3 +40,9 @@ export interface WeatherDescritpion {
   },
 }
 
+export interface TimeDescritpion {
+  time_24: string;
+  date: string;
+  timezone_offset:number
+}
+

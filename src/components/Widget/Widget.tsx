@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Widget.scss';
-import { getWeather } from '../../services/fetchAPI';
-import { WeatherDescritpion } from '../../shared/interfaces';
+import { getWeather, getTime } from '../../services/fetchAPI';
+import { WeatherDescritpion, TimeDescritpion } from '../../shared/interfaces';
 
 type TProps = {
   capital: string;
@@ -21,6 +21,11 @@ const Widget: React.FC<TProps> = ({ country = 'Egypt', capital = 'Kair' }) => {
       icon: '',
       description: '',
     },
+  });
+  const [dataTime, setDataTime] = useState<TimeDescritpion>({
+    time_24: '',
+    date: '',
+    timezone_offset: 0,
   });
   useEffect(() => {
     const weather = async () => {
@@ -42,6 +47,18 @@ const Widget: React.FC<TProps> = ({ country = 'Egypt', capital = 'Kair' }) => {
       setDataWeather(data);
     };
     weather();
+  }, []);
+
+  useEffect(() => {
+    const dateCity = async () => {
+      const data = await getTime(capital).then((res) => {
+        setLoadingDate(true);
+        const { time_24, date, timezone_offset } = res;
+        return { time_24, date, timezone_offset };
+      });
+      setDataTime(data);
+    };
+    dateCity();
   }, []);
 
   const widgetWeather = () => {
@@ -75,9 +92,10 @@ const Widget: React.FC<TProps> = ({ country = 'Egypt', capital = 'Kair' }) => {
   };
 
   const widgetDate = () => {
+    const { date, time_24 } = dataTime;
     return (
       <div>
-        <span>09.03.2021</span> - <span>14:00</span>
+        <span>{date}</span> - <span>{time_24}</span>
       </div>
     );
   };
@@ -93,14 +111,13 @@ const Widget: React.FC<TProps> = ({ country = 'Egypt', capital = 'Kair' }) => {
       </div>
       <div className="widget-currancy">
         <p>local currency rate</p>
-
         {!loadingCurrancy && <p>Loading...</p>}
         {loadingCurrancy && widgetCurrancy()}
       </div>
       <div className="widget-locale">
         <p>The local time</p>
         {!loadingDate && <p>Loading...</p>}
-        {loadingCurrancy && widgetDate()}
+        {loadingDate && widgetDate()}
       </div>
     </div>
   );
