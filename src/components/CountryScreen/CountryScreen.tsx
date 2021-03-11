@@ -14,6 +14,10 @@ const CountryScreen: React.FC = (props: any) => {
     props.activeCountry.countryFullInfo.countryInfo[
       props.activeLanguage.activeLanguage
     ];
+  const activeCountryCurrancy = props.activeCountry.countryFullInfo.currency;
+  const activeCapitalEng =
+    props.activeCountry.countryFullInfo.countryInfo.en.capital;
+
   return (
     <div className="CountryScreen">
       CountryScreen Component
@@ -24,6 +28,8 @@ const CountryScreen: React.FC = (props: any) => {
       <Widget
         country={activeCountryInfo.countryName}
         capital={activeCountryInfo.capital}
+        capitalEng={activeCapitalEng}
+        currancy={activeCountryCurrancy}
       />
       <Map />
       <CarouselLists attractions={activeCountryInfo.attractions} />

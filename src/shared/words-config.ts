@@ -20,4 +20,19 @@ export const WORDS_CONFIG = {
     native: "Поиск",
     additional: "Пошук",
   },
+  WIDGET_CURRANCY: {
+    foreign: "Сurrency rate",
+    native: "Курс валют",
+    additional: "Курс валют",
+  },
+  WIDGET_WEATHER: {
+    foreign: "Weather forecast",
+    native: "Прогноз погоды",
+    additional: "Прагноз надвор'я",
+  },
+  WIDGET_TIME: {
+    foreign: "Time in",
+    native: "Время в",
+    additional: "Час у",
+  },
 };
