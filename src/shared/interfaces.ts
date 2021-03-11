@@ -28,3 +28,21 @@ export interface AttractionDescription {
   name: string;
   description: string;
 }
+export interface WeatherDescritpion {
+  temp: string;
+  wind: string;
+  humidity: string;
+  weather: {
+    id: string;
+    main: string;
+    icon: string;
+    description: string;
+  },
+}
+
+export interface TimeDescritpion {
+  time_24: string;
+  date: string;
+  timezone_offset:number
+}
+

@@ -21,7 +21,10 @@ const CountryScreen: React.FC = (props: any) => {
       <span>{activeCountryInfo.capital}</span>
       <span>{activeCountryInfo.aboutCountry}</span>
       <VideoPlayer source={activeCountryInfo.video} />
-      <Widget />
+      <Widget
+        country={activeCountryInfo.countryName}
+        capital={activeCountryInfo.capital}
+      />
       <Map />
       <CarouselLists attractions={activeCountryInfo.attractions} />
       <NavLink to="/" style={{ textDecoration: 'none' }}>
