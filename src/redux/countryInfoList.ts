@@ -8,6 +8,7 @@ export const defaultcountryInfoList = [
       lat: 27,
       long: 30,
       flag: "https://disease.sh/assets/img/flags/eg.png",
+      currency:'EGP',
       countryInfo: {
         en: {
           countryName: "Egypt",
@@ -174,6 +175,7 @@ export const defaultcountryInfoList = [
       lat: 42.8333,
       long: 12.8333,
       flag: "https://disease.sh/assets/img/flags/it.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Italy",
@@ -340,6 +342,7 @@ export const defaultcountryInfoList = [
       lat: 40,
       long: -4,
       flag: "https://disease.sh/assets/img/flags/es.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Spain",
@@ -507,6 +510,7 @@ export const defaultcountryInfoList = [
       lat: 39,
       long: 22,
       flag: "https://disease.sh/assets/img/flags/gr.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Greece",
@@ -673,6 +677,7 @@ export const defaultcountryInfoList = [
       lat: 50.503887,
       long: 4.469936,
       flag: "https://disease.sh/assets/img/flags/be.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Belgium",
@@ -839,6 +844,7 @@ export const defaultcountryInfoList = [
       lat: 35.86166,
       long: 104.195397,
       flag: "https://disease.sh/assets/img/flags/cn.png",
+      currency:'CNY',
       countryInfo: {
         en: {
           countryName: "China",
@@ -1005,6 +1011,7 @@ export const defaultcountryInfoList = [
       lat: 53.709807,
       long: 27.953389,
       flag: "https://disease.sh/assets/img/flags/by.png",
+      currency:'BYN',
       countryInfo: {
         en: {
           countryName: "Belarus",
@@ -1171,6 +1178,7 @@ export const defaultcountryInfoList = [
       lat: 61.52401,
       long: 105.318756,
       flag: "https://disease.sh/assets/img/flags/ru.png",
+      currency:'RUB',
       countryInfo: {
         en: {
           countryName: "Russia (Russian Federation)",

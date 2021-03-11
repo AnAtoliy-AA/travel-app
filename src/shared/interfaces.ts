@@ -7,6 +7,7 @@ export interface Country {
     lat: number;
     long: number;
     flag: string;
+    currency:string;
     countryInfo: {
       en: CountryDescription;
       ru: CountryDescription;
@@ -44,5 +45,11 @@ export interface TimeDescritpion {
   time_24: string;
   date: string;
   timezone_offset:number
+}
+
+export interface CurrencyDescritpion {
+  eur: any;
+  rub: any;
+  local: any;
 }
 
