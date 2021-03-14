@@ -1,11 +1,12 @@
 import "./MainMenu.scss";
 
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  getAllCountriesInfo,
   setActiveCountry,
   setCountriesInfoData,
-  setIsCountrySelected,
+  setIsCountrySelected
 } from "../../redux/countryList-reducer";
 
 import { Country } from "../../shared/interfaces";
@@ -14,6 +15,11 @@ import { connect } from "react-redux";
 
 const MainMenu: React.FC = (props: any) => {
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    props.getAllCountriesInfo();
+  }, []);
+  
   const changeActiveCountry = (country: Country) => {
     props.setActiveCountry(country);
   };
@@ -118,4 +124,5 @@ export default connect(mapStateToProps, {
   setCountriesInfoData,
   setActiveCountry,
   setIsCountrySelected,
+  getAllCountriesInfo
 })(MainMenu);

@@ -1,4 +1,6 @@
+import { Country } from "../shared/interfaces"
 import { defaultcountryInfoList } from "./countryInfoList"
+import { travelAppApi } from "../api/travel-app-api"
 
 const ACTION_CONST = {
     SET_COUNTRIES_INFO: 'SET_COUNTRIES_INFO',
@@ -12,7 +14,7 @@ let initialState = {
     isCountrySelected: false,
 }
 
-const countryListReducer = (state = initialState, action: { type: any; countryInfoList: any; activeCountry: any; value: any }) => {
+const countryListReducer = (state = initialState, action: { type: string; countryInfoList: Country[]; activeCountry: string; value: boolean }) => {
     switch (action.type) {
         case ACTION_CONST.SET_COUNTRIES_INFO: {
             return { ...state, countryInfoList: action.countryInfoList }
@@ -28,27 +30,16 @@ const countryListReducer = (state = initialState, action: { type: any; countryIn
     }
 }
 
-export const setCountriesInfoData = (countryInfoList: any) => ({ type: ACTION_CONST.SET_COUNTRIES_INFO, countryInfoList })
-export const setActiveCountry = (activeCountry: any) => ({ type: ACTION_CONST.SET_ACTIVE_COUNTRY, activeCountry });
-export const setIsCountrySelected = (value: any) => ({ type: ACTION_CONST.SET_IS_COUNTRY_SELECTED, value });
+export const setCountriesInfoData = (countryInfoList: Country[]) => ({ type: ACTION_CONST.SET_COUNTRIES_INFO, countryInfoList })
+export const setActiveCountry = (activeCountry: string) => ({ type: ACTION_CONST.SET_ACTIVE_COUNTRY, activeCountry });
+export const setIsCountrySelected = (value: boolean) => ({ type: ACTION_CONST.SET_IS_COUNTRY_SELECTED, value });
 
-// export const getWorldWide = () => {
-//     return (dispatch: (arg0: any) => void) => {
-//         countriesAPI.getWorldWide()
-//             .then((data: { Global: any }) => {
-//                 dispatch(setWorldWideData(data.Global));
-//                 dispatch(setCovidTableWorldWideData(data.Global));
-//             });
-//     }
-// }
-
-// export const getCountriesInfo = () => {
-//     return (dispatch: (arg0: { type: string; countryInfoList: any }) => void) => {
-//         countriesAPI.getCountriesInfo()
-//             .then((data: any) => {
-//                 dispatch(setCountriesInfoData(data));
-//             });
-//     }
-// }
+export const getAllCountriesInfo = () => async (
+    dispatch: (arg0: { type: string; countryInfoList: any }) => void
+  ) => {
+    const response = await travelAppApi.getAllCountries();
+  
+    dispatch(setCountriesInfoData(response));
+  };
 
 export default countryListReducer;
