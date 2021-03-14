@@ -8,10 +8,12 @@ export const defaultcountryInfoList = [
       lat: 27,
       long: 30,
       flag: "https://disease.sh/assets/img/flags/eg.png",
+      currency:'EGP',
       countryInfo: {
         en: {
           countryName: "Egypt",
-          capital: "Kair",
+          capital: "Cairo",
+          timezone: 2,
           aboutCountry:
             "Egypt is a large country, but a large portion of it is desert. Most people (95% of Egypt's total people) live in areas around the coast of the Mediterranean Sea and along the Nile River. This includes the cities of Cairo, Alexandria, Aswan, and Port Said. Not many people live in the desert.",
           attractions: [
@@ -63,6 +65,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Египет",
           capital: "Каир",
+          timezone: 2,
           aboutCountry:
             "Египет - большая страна, но большая часть ее - пустыня. Большинство людей (95% всего населения Египта) живут в районах вдоль побережья Средиземного моря и вдоль реки Нил. Сюда входят города Каир, Александрия, Асуан и Порт-Саид. В пустыне живет не так много людей.",
           attractions: [
@@ -114,6 +117,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Егіпет",
           capital: "Каір",
+          timezone: 2,
           aboutCountry:
             "Егіпет - вялікая краіна, але вялікая частка яго - пустыня. Большасць людзей (95% ад агульнай колькасці жыхароў Егіпта) жыве ў раёнах вакол узбярэжжа Міжземнага мора і ўздоўж ракі Ніл. Сюды ўваходзяць гарады Каір, Александрыя, Асуан і Порт-Саід. У пустыні жыве не так шмат людзей.",
           attractions: [
@@ -174,10 +178,12 @@ export const defaultcountryInfoList = [
       lat: 42.8333,
       long: 12.8333,
       flag: "https://disease.sh/assets/img/flags/it.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Italy",
           capital: "Rome",
+          timezone: 1,
           aboutCountry:
             "Italy is a boot-shaped peninsula that juts out of southern Europe into the Adriatic Sea, Tyrrhenian Sea, Mediterranean Sea, and other waters. Its location has played an important role in its history. ... West of the Apennines are wooded hills that are home to many of Italy's historic cities, including Rome.",
           attractions: [
@@ -229,6 +235,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Италия",
           capital: "Рим",
+          timezone: 1,
           aboutCountry:
             "Италия представляет собой полуостров в форме сапога, который выступает из южной части Европы в Адриатическое море, Тирренское море, Средиземное море и другие воды. Его расположение сыграло важную роль в его истории. ... К западу от Апеннин находятся лесистые холмы, на которых расположены многие исторические города Италии, включая Рим.",
           attractions: [
@@ -280,6 +287,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Італія",
           capital: "Рым",
+          timezone: 1,
           aboutCountry:
             "Італія - паўвостраў у форме бота, які выходзіць з поўдня Еўропы ў Адрыятычнае мора, Тырэнскае мора, Міжземнае мора і іншыя воды. Яго месцазнаходжанне адыграла важную ролю ў яго гісторыі. ... На захад ад Апенін знаходзяцца лясістыя ўзгоркі, дзе пражываюць многія гістарычныя гарады Італіі, у тым ліку Рым.",
           attractions: [
@@ -340,10 +348,12 @@ export const defaultcountryInfoList = [
       lat: 40,
       long: -4,
       flag: "https://disease.sh/assets/img/flags/es.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Spain",
           capital: "Madrid",
+          timezone: 1,
           aboutCountry:
             "Spain is a country located in southwestern Europe on the Iberian Peninsula to the south of France and Andorra and to the east of Portugal. It has coastlines on the Bay of Biscay (a part of the Atlantic Ocean) and the Mediterranean Sea",
           attractions: [
@@ -395,6 +405,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Испания",
           capital: "Мадрид",
+          timezone: 1,
           aboutCountry:
             "Испания - страна, расположенная в юго-западной Европе на Пиренейском полуострове к югу от Франции и Андорры и к востоку от Португалии. Он имеет береговую линию на Бискайском заливе (часть Атлантического океана) и Средиземном море.",
           attractions: [
@@ -447,6 +458,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Іспанія",
           capital: "Мадрыд",
+          timezone: 1,
           aboutCountry:
             "Іспанія - краіна, размешчаная на паўднёвым захадзе Еўропы на Пірэнэйскім паўвостраве на поўдні Францыі і Андоры і на ўсходзе Партугаліі. Ён мае ўзбярэжжа Біскайскага заліва (частка Атлантычнага акіяна) і Міжземнага мора",
           attractions: [
@@ -507,10 +519,12 @@ export const defaultcountryInfoList = [
       lat: 39,
       long: 22,
       flag: "https://disease.sh/assets/img/flags/gr.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Greece",
           capital: "Athens",
+          timezone: 2,
           aboutCountry:
             "Greece, the southernmost of the countries of the Balkan Peninsula. Geography has greatly influenced the country’s development. Mountains historically restricted internal communications, but the sea opened up wider horizons. The total land area of Greece (one-fifth of which is made up of the Greek islands) is comparable in size to England or the U.S. state of Alabama.",
           attractions: [
@@ -562,6 +576,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Греция",
           capital: "Афины",
+          timezone: 2,
           aboutCountry:
             "Греция, самая южная из стран Балканского полуострова. География сильно повлияла на развитие страны. Горы исторически ограничивали внутренние коммуникации, но море открывало более широкие горизонты. Общая площадь суши Греции (пятую часть которой составляют греческие острова) сопоставима по размеру с Англией или американским штатом Алабама.",
           attractions: [
@@ -613,6 +628,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Грэцыя",
           capital: "Афіны",
+          timezone: 2,
           aboutCountry:
             "Грэцыя, самая паўднёвая з краін Балканскага паўвострава. Геаграфія вельмі паўплывала на развіццё краіны. Горы гістарычна абмяжоўвалі ўнутраныя камунікацыі, але мора адкрывала больш шырокі кругагляд. Агульная плошча сушы Грэцыі (пятую частку складаюць грэчаскія астравы) па памерах параўнальная з Англіяй або амерыканскім штатам Алабама.",
           attractions: [
@@ -673,10 +689,12 @@ export const defaultcountryInfoList = [
       lat: 50.503887,
       long: 4.469936,
       flag: "https://disease.sh/assets/img/flags/be.png",
+      currency:'EUR',
       countryInfo: {
         en: {
           countryName: "Belgium",
           capital: "Brussel",
+          timezone: 1,
           aboutCountry:
             "Belgium may be small but it's packed full of sights. UNESCO-acclaimed sites in the capital city of Brussels range from 14th-century guildhalls surrounding the elegant Grand Place to the early 20th-century Art Nouveau townhouses of Victor Horta. This small nation has been right at the forefront of Europe's history, with many of the continent's most important events played out across its countryside. Whether you're here for the ancient or modern history, Belgium provides a huge chunk of European heritage within a bite-sized piece of land.",
           attractions: [
@@ -728,6 +746,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Бельгия",
           capital: "Брюссель",
+          timezone: 1,
           aboutCountry:
             "Бельгия или официально Королевство Бельгия – государство в Западной Европе; маленький кусочек материка с выходом к Северному морю, «зажатый» между Францией на юге и западе и Германией на востоке. В туристических путеводителях Бельгия фигурирует как страна с эклектичной архитектурой, родина самого вкусного шоколада, пива и фламандской школы живописи, а также колыбель стиля ар-нуво. И в общем-то, все это соответствует истине. По количеству средневековых памятников на душу населения королевство Бельгия действительно способно конкурировать с более крупными державами, не говоря уже о гастрономических удовольствиях, давно превратившихся в ассоциативные клише, вызывающие непроизвольное слюноотделение у каждого путешественника.",
           attractions: [
@@ -779,6 +798,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Бельгія",
           capital: "Брусэль",
+          timezone: 1,
           aboutCountry:
             "Бельгія або афіцыйна Каралеўства Бельгія - дзяржава ў Заходняй Еўропе; маленькі кавалачак мацерыка з выхадам да Паўночнага мора,« заціснуты »паміж Францыяй на поўдні і захадзе і Германіяй на ўсходзе. У турыстычных даведніках Бельгія фігуруе як краіна з эклектычнай архітэктурай, радзіма самага смачнага шакаладу, піва і фламандскай школы жывапісу, а таксама калыска стылю ар-нуво. і увогуле-то, усё гэта адпавядае праўдзе. Па колькасці сярэднявечных помнікаў на душу насельніцтва каралеўства Бельгія сапраўды здольна канкураваць з больш буйнымі дзяржавамі, не кажучы ўжо пра гастранамічных задавальненнях, даўно пераўтвораных у асацыятыўныя клішэ, якія выклікаюць міжвольнае слінаадлучэнне ў кожнага вандроўцы.",
           attractions: [
@@ -839,10 +859,12 @@ export const defaultcountryInfoList = [
       lat: 35.86166,
       long: 104.195397,
       flag: "https://disease.sh/assets/img/flags/cn.png",
+      currency:'CNY',
       countryInfo: {
         en: {
           countryName: "China",
           capital: "Beijing",
+          timezone: 8,
           aboutCountry:
             "China or Zhong Guo, as the Chinese themselves call it, is one of the most amazing and mysterious countries in the world. Homeland of paper and printing, gunpowder and compass, silk, porcelain and many other useful inventions and discoveries, it invariably attracts the attention of historians, researchers and travelers. Located in the southeast of the Asian continent and with its outlines resembling a huge bird soaring in the sky, modern China is the heir of a great civilization, the chronicle of which is about five thousand years old.",
           attractions: [
@@ -894,6 +916,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Китай",
           capital: "Пекин",
+          timezone: 8,
           aboutCountry:
             "Китай или Чжун Го (Zhōngguó), как его называют сами китайцы, является одной из самых удивительных и загадочных стран мира. Родина бумаги и книгопечатания, пороха и компаса, шелка, фарфора и многих других полезных изобретений и открытий, он неизменно приковывает к себе внимание историков, исследователей, путешественников. Расположенный на юго-востоке азиатского континента и своими очертаниями напоминающий парящую в небе огромную птицу, современный Китай – наследник великой цивилизации, летопись которой насчитывает около пяти тысячелетий.",
           attractions: [
@@ -945,6 +968,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Китай",
           capital: "Пекин",
+          timezone: 8,
           aboutCountry:
             "Кітай або Чжун Го (Zhōngguó), як яго называюць самі кітайцы, з'яўляецца адной з самых дзіўных і загадкавых краін свету. Радзіма паперы і кнігадрукавання, пораху і компаса, шоўку, фарфору і многіх іншых карысных вынаходстваў і адкрыццяў, ён нязменна прыкоўвае да сябе ўвагу гісторыкаў, даследчыкаў, падарожнікаў. Размешчаны на паўднёвым усходзе азіяцкага кантынента і сваімі абрысамі нагадвае якая лунала ў небе велізарную птушку, сучасны Кітай - спадчыннік вялікай цывілізацыі, летапіс якой налічвае каля пяці тысячагоддзяў.",
           attractions: [
@@ -1005,10 +1029,12 @@ export const defaultcountryInfoList = [
       lat: 53.709807,
       long: 27.953389,
       flag: "https://disease.sh/assets/img/flags/by.png",
+      currency:'BYN',
       countryInfo: {
         en: {
           countryName: "Belarus",
           capital: "Minsk",
+          timezone: 3,
           aboutCountry:
             'An Eastern European state with land borders with countries such as Russia, Ukraine, Poland, Latvia and Lithuania. In terms of tourism, Belarus is considered a tasty morsel both for hunters for cultural values, and for nature lovers dreaming of walking in the fabulous Polesie, and for food bloggers looking for new tastes where not everyone will guess to do it. Well, if you desperately wanted a European flavor, then "the country of cornflowers and white storks" will in no way yield to its western neighbors. Medieval castles with ghosts and dark biographies of owners, ruins of once impregnable bastions, Catholic churches and Orthodox churches - even in the most out-of-the-ordinary city of Belarus there is at least one building whose history is worthy of at least a story, or even a real romantic saga.',
           attractions: [
@@ -1060,6 +1086,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Беларусь (Республика Беларусь, Белоруссия)",
           capital: "Минск",
+          timezone: 3,
           aboutCountry:
             "Восточноевропейское государство, имеющее сухопутные границы с такими странами, как Россия, Украина, Польша, Латвия и Литва. В туристическом отношении Беларусь считается лакомым кусочком и для охотников за культурными ценностями, и для природоманов, грезящих о прогулках по сказочному Полесью, и для фуд-блогеров, ищущих новые вкусы там, где не все догадаются это сделать. Ну а если отчаянно захотелось европейского колорита, то «страна васильков и белых аистов» и тут ни в чем не уступит западным соседям. Средневековые замки с привидениями и темными биографиями владельцев, руины некогда неприступных бастионов, католические костелы и православные храмы – даже в самом заштатном городе Беларуси найдется хотя бы одно сооружение, чья история достойна как минимум повести, а то и настоящей романтической саги.",
           attractions: [
@@ -1111,6 +1138,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Беларусь (Рэспубліка Беларусь)",
           capital: "Мінск",
+          timezone: 3,
           aboutCountry:
             "Ўсходнееўрапейская дзяржава, якая мае сухапутныя мяжы з такімі краінамі, як Расія, Украіна, Польшча, Латвія і Літва. У турыстычным дачыненні Беларусь лічыцца прывабным кавалачкам і для паляўнічых за культурнымі каштоўнасцямі, і для природоманов, якія мараць аб шпацырах па казачным Палессі, і для фуд-блогераў, якія шукаюць новыя густы там, дзе не ўсе здагадаюцца гэта зрабіць. Ну а калі адчайна захацелася еўрапейскага каларыту, то «краіна васількоў і белых буслоў» і тут ні ў чым не саступіць заходнім суседзям. Сярэднявечныя замкі з прывідамі і цёмнымі біяграфіямі уладальнікаў, руіны некалі непрыступных бастыёнаў, каталіцкія касцёлы і праваслаўныя храмы - нават у самым заштатным горадзе Беларусі знойдзецца хоць бы адно збудаванне, чыя гісторыя вартая як мінімум аповесці, а то і сапраўднай рамантычнай сагі.",
           attractions: [
@@ -1171,10 +1199,12 @@ export const defaultcountryInfoList = [
       lat: 61.52401,
       long: 105.318756,
       flag: "https://disease.sh/assets/img/flags/ru.png",
+      currency:'RUB',
       countryInfo: {
         en: {
           countryName: "Russia (Russian Federation)",
           capital: "Moscow",
+          timezone: 3,
           aboutCountry:
             "The Russian Federation is the largest state in the world, occupying 1/8 of the land area and located in the northeast of Eurasia. Russia is a country with a long history, rich cultural heritage and generous nature. In Russia, you can find almost everything that a traveler meets individually in a particular country - sunny beaches of the subtropics and snowy mountain peaks, endless steppes and deep forests, turbulent rivers and warm seas.",
           attractions: [
@@ -1226,6 +1256,7 @@ export const defaultcountryInfoList = [
         ru: {
           countryName: "Россия (Российская Федерация)",
           capital: "Москва",
+          timezone: 3,
           aboutCountry:
             "Российская Федерация — крупнейшее в мире государство, занимающее 1/8 часть суши и расположенное на северо-востоке Евразии. Россия — страна с многовековой историей, богатым культурным наследием и щедрой природой. В России можно найти почти всё то, что встречает путешественник по отдельности в той или иной стране — солнечные пляжи субтропиков и снежные горные вершины, бескрайние степи и глухие леса, бурные реки и тёплые моря.",
           attractions: [
@@ -1277,6 +1308,7 @@ export const defaultcountryInfoList = [
         by: {
           countryName: "Расія",
           capital: "Масква",
+          timezone: 3,
           aboutCountry:
             "Расійская Федэрацыя - найбуйнейшае ў свеце дзяржава, якое займае 1/8 частку сушы і размешчанае на паўночным усходзе Еўразіі. Расія - краіна з шматвяковай гісторыяй, багатай культурнай спадчынай і шчодрай прыродай. У Расеі можна знайсці амаль усё тое, што сустракае падарожнік па адным у той ці іншай краіне - сонечныя пляжы субтропікаў і снежныя горныя вяршыні, бязмежныя стэпы і глухія лясы, бурныя ракі і цёплыя мора.",
           attractions: [
