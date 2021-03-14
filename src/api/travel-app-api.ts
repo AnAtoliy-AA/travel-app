@@ -14,4 +14,25 @@ export const travelAppApi = {
           return allCountriesInfo;
         });
     },
+    
+    login(email: string, password: string) {
+      return  axios
+            .post('https://travel-app-back-end.herokuapp.com/api/auth/login', {
+                email: email,
+                password: password,
+            })
+            .then((response) => {
+                // authStore.setToken(response.data.token);
+                // authStore.setIsAuth(true);
+                // getSettings();
+                // getLastGame();
+                // getStatistics();
+                return response.data;
+            })
+            .catch((er) => {
+                console.log('error: ', er.message);
+            });
+    },
+    
+    
 }

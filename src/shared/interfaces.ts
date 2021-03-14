@@ -54,3 +54,9 @@ export interface CurrencyDescritpion {
   local: number;
 }
 
+export interface User {
+  name: string;
+  email: string;
+  password: string;
+  imageSrc: string;
+}

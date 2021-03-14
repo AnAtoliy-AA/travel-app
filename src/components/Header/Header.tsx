@@ -1,8 +1,10 @@
 import "./Header.scss";
 
+import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
 import React, { useState } from "react";
 
-import { LANGUAGE_CONFIG } from "../../shared/words-config";
+import { Button } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { setActiveLanguage } from "../../redux/language-reducer";
 
@@ -33,6 +35,40 @@ const Header: React.FC = (props: any) => {
           {LANGUAGE_CONFIG.additional}
         </option>
       </select>
+      <div className="header-nav">
+        <NavLink to="/login" style={{ textDecoration: "none" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            type="submit"
+            // startIcon={<ExitToAppTwoToneIcon />}
+          >
+            {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.native &&
+              WORDS_CONFIG.LOGIN_BUTTON.native}
+            {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.foreign &&
+              WORDS_CONFIG.LOGIN_BUTTON.foreign}
+            {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.additional &&
+              WORDS_CONFIG.LOGIN_BUTTON.additional}
+          </Button>
+        </NavLink>
+        <NavLink to="/register" style={{ textDecoration: "none" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            type="submit"
+            // startIcon={<ExitToAppTwoToneIcon />}
+          >
+           {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.native &&
+              WORDS_CONFIG.REGISTER_BUTTON.native}
+            {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.foreign &&
+              WORDS_CONFIG.REGISTER_BUTTON.foreign}
+            {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.additional &&
+              WORDS_CONFIG.REGISTER_BUTTON.additional}
+          </Button>
+        </NavLink>
+      </div>
     </div>
   );
 };
