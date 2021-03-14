@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Widget.scss';
-import { getWeather, getTime, getCurrancy } from '../../services/fetchAPI';
+import { getWeather, getCurrancy } from '../../services/fetchAPI';
 import { getIcon } from '../../services/getIcons';
 import {
   WeatherDescritpion,
@@ -13,16 +13,18 @@ type TProps = {
   capitalEng: string;
   country: string;
   currancy: string;
+  timezone: number;
 };
 const Widget: React.FC<TProps> = ({
-  country = 'Egypt',
   capital = 'Kair',
   capitalEng = 'Kair',
   currancy = 'EGP',
+  timezone = 0,
 }) => {
   const [loadingWeather, setLoadingWeather] = useState<boolean>(false);
-  const [loadingDate, setLoadingDate] = useState<boolean>(false);
   const [loadingCurrancy, setLoadingCurrancy] = useState<boolean>(false);
+  const [loadingClock, setLoadingClock] = useState<boolean>(false);
+
   const [dataWeather, setDataWeather] = useState<WeatherDescritpion>({
     temp: '',
     wind: '',
@@ -34,17 +36,21 @@ const Widget: React.FC<TProps> = ({
       description: '',
     },
   });
-  const [dataTime, setDataTime] = useState<TimeDescritpion>({
-    time_24: '',
-    date: '',
-    timezone_offset: 0,
-  });
   const [dataCurrancy, setCurrancy] = useState<CurrencyDescritpion>({
     eur: 0,
     rub: 0,
     local: 0,
   });
 
+  const [clockSec, setClockSec] = useState<number>(0);
+  const [clockData, setClockData] = useState<TimeDescritpion>({
+    month: '01',
+    day: '01',
+    year: '2021',
+    hour: '00',
+    min: '00',
+    sec: '00',
+  });
   useEffect(() => {
     const weather = async () => {
       const data = await getWeather(capitalEng).then((res) => {
@@ -68,16 +74,57 @@ const Widget: React.FC<TProps> = ({
   }, [capitalEng]);
 
   useEffect(() => {
-    const dateCity = async () => {
-      const data = await getTime(capitalEng).then((res) => {
-        setLoadingDate(true);
-        const { time_24, date, timezone_offset } = res;
-        return { time_24, date, timezone_offset };
-      });
-      setDataTime(data);
+    let timer = setTimeout(() => {
+      const data = new Date();
+
+      let year, mon, day, hour, min, sec;
+      let hourCapital: number = 0;
+      if (timezone === 0) {
+        year = data.getFullYear();
+        mon = data.getMonth() + 1;
+        day = data.getDate();
+        hour = data.getHours();
+        min = data.getMinutes();
+        sec = data.getSeconds();
+
+        hourCapital = hour;
+      } else {
+        year = data.getUTCFullYear();
+        mon = data.getUTCMonth() + 1;
+        day = data.getUTCDate();
+        hour = data.getUTCHours();
+        min = data.getUTCMinutes();
+        sec = data.getUTCSeconds();
+
+        hourCapital = hour + timezone;
+        if (hourCapital > 24) {
+          day += 1;
+          hourCapital = hourCapital - 24;
+        }
+      }
+
+      const monNew = mon < 10 ? `0${mon}` : `${mon}`;
+      const dayNew = day < 10 ? `0${day}` : `${day}`;
+      const hourNew = hourCapital < 10 ? `0${hourCapital}` : `${hourCapital}`;
+      const minNew = min < 10 ? `0${min}` : `${min}`;
+      const secNew = sec < 10 ? `0${sec}` : `${sec}`;
+
+      const next = {
+        month: monNew,
+        day: dayNew,
+        year: `${year}`,
+        hour: hourNew,
+        min: minNew,
+        sec: secNew,
+      };
+      setClockSec(clockSec + 1);
+      setClockData((prev) => next);
+      setLoadingClock(true);
+    }, 1000);
+    return () => {
+      clearTimeout(timer);
     };
-    dateCity();
-  }, [capitalEng]);
+  }, [clockSec]);
 
   useEffect(() => {
     const currancyExchange = async () => {
@@ -161,15 +208,19 @@ const Widget: React.FC<TProps> = ({
     );
   };
 
-  const widgetDate = () => {
-    const { date, time_24 } = dataTime;
+  const widgetClock = () => {
+    const { month, day, year, hour, min, sec } = clockData;
     return (
-      <div>
-        <span>{date}</span> - <span>{time_24}</span>
+      <div className="local-clock">
+        <p>
+          {day} - {month} - {year}
+        </p>{' '}
+        <p>
+          {hour} : {min} : {sec}
+        </p>
       </div>
     );
   };
-
   return (
     <div className="widget-container">
       Widget
@@ -185,8 +236,8 @@ const Widget: React.FC<TProps> = ({
       </div>
       <div className="widget-locale">
         <p>Time in {capital}</p>
-        {!loadingDate && <p>Loading...</p>}
-        {loadingDate && widgetDate()}
+        {!loadingClock && <p>Loading...</p>}
+        {loadingClock && widgetClock()}
       </div>
     </div>
   );
