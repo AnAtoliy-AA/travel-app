@@ -8,6 +8,7 @@ import Alert from "@material-ui/lab/Alert";
 import { Button } from "@material-ui/core";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
 import { connect } from "react-redux";
+import { logout } from "../../redux/auth-reducer"
 import { setActiveLanguage } from "../../redux/language-reducer";
 import { setSearchFormTerm } from "../../redux/searchForm-reducer";
 
@@ -135,7 +136,7 @@ const Header: React.FC = (props: any) => {
             color="primary"
             size="small"
             type="submit"
-            // onClick={logOut}
+            onClick={props.logout}
             startIcon={<ExitToAppTwoToneIcon />}
           >
             {props.activeLanguage === LANGUAGE_CONFIG.native &&
@@ -166,4 +167,5 @@ let mapStateToProps = (state: {
 export default connect(mapStateToProps, {
   setActiveLanguage,
   setSearchFormTerm,
+  logout,
 })(Header);
