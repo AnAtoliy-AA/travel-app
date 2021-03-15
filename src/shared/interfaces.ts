@@ -13,6 +13,13 @@ export interface Country {
       ru: CountryDescription;
       be: CountryDescription;
     };
+    marks: [
+      {
+        mark: string;
+        userId: string;
+        userName: string;
+      }
+    ]
   };
 }
 
