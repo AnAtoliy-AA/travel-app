@@ -50,9 +50,12 @@ export interface WeatherDescritpion {
 }
 
 export interface TimeDescritpion {
-  time_24: string;
-  date: string;
-  timezone_offset:number
+  month: string;
+  day: string;
+  year: string;
+  hour: string;
+  min: string;
+  sec: string;
 }
 
 export interface CurrencyDescritpion {
