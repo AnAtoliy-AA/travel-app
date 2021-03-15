@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import Alert from "@material-ui/lab/Alert";
 import { Button } from "@material-ui/core";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
+import { TRAVEL_APP_API } from "../../api/travel-app-api";
 import { connect } from "react-redux";
 import { logout } from "../../redux/auth-reducer"
 import { setActiveLanguage } from "../../redux/language-reducer";
@@ -62,6 +63,7 @@ const Header: React.FC = (props: any) => {
         </form>
       </Route>
       {props.authStore.isAuthorized ? (
+        <>
         <Alert severity="success">
           {props.activeLanguage === LANGUAGE_CONFIG.native &&
             WORDS_CONFIG.AUTH_SUCCESS.native}
@@ -71,6 +73,8 @@ const Header: React.FC = (props: any) => {
             WORDS_CONFIG.AUTH_SUCCESS.additional}{" "}
           {props.authStore.userData.userName}
         </Alert>
+        <img className="profilePhoto" src={`${TRAVEL_APP_API}${props.authStore.userData.imageSrc}`} alt="yourPhoto"/>
+        </>
       ) : (
         <Alert severity="error">
           {props.activeLanguage === LANGUAGE_CONFIG.native &&
