@@ -1,4 +1,4 @@
-import {APIWEATHERURL, APIWEATHERKEY, APITIMEZONE, APITIMEKEY, APICURRANCY, APICURRANCYKEY} from './api';
+import {APIWEATHERURL, APIWEATHERKEY, APICURRANCY, APICURRANCYKEY} from './api';
 
 const getWeather=async (city:string='Moskaw')=> {
   const result=await fetch(`${APIWEATHERURL}${city}&appid=${APIWEATHERKEY}&lang=en`)

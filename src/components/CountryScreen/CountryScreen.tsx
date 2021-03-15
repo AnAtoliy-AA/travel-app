@@ -19,7 +19,8 @@ const CountryScreen: React.FC = (props: any) => {
     props.activeCountry.countryFullInfo.countryInfo.en.capital;
 
   const timezoneCapital = activeCountryInfo.timezone;
-
+  const { lat, long } = props.activeCountry.countryFullInfo;
+  const coordsCapital = [lat, long];
   return (
     <div className="CountryScreen">
       CountryScreen Component
@@ -34,7 +35,11 @@ const CountryScreen: React.FC = (props: any) => {
         currancy={activeCountryCurrancy}
         timezone={timezoneCapital}
       />
-      <Map />
+      <Map
+        country={activeCountryInfo.countryName}
+        capital={activeCountryInfo.capital}
+        coordsCapital={coordsCapital}
+      />
       <CarouselLists attractions={activeCountryInfo.attractions} />
       <NavLink to="/" style={{ textDecoration: 'none' }}>
         RETURN BACK
