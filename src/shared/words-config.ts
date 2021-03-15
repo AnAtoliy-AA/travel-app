@@ -35,4 +35,49 @@ export const WORDS_CONFIG = {
     native: "Время в",
     additional: "Час у",
   },
+  LOGIN_BUTTON: {
+    foreign: "Login",
+    native: "Авторизация",
+    additional: "Аўтарызацыя",
+  },
+  REGISTER_BUTTON: {
+    foreign: "Register",
+    native: "Регистрация",
+    additional: "Рэгістрацыя",
+  },
+  LOGOUT_BUTTON: {
+    foreign: "Logout",
+    native: "Выход",
+    additional: "Выхад",
+  },
+  AUTH_SUCCESS: {
+    foreign: "You were authorized as",
+    native: "Вы были авторизированы как",
+    additional: "Вы ўпаўнаважаны як",
+  },
+  AUTH_FAIL: {
+    foreign: "Please, login or register!",
+    native: "Пожалуйста, зарегистрируйтесь или авторизируйтесь!",
+    additional: "Калі ласка, увайдзіце альбо зарэгіструйцеся!",
+  },
+  AUTH_NAME: {
+    foreign: "Write your name here",
+    native: "Напишите здесь свое имя",
+    additional: "Напішыце тут сваё імя",
+  },
+  AUTH_EMAIL: {
+    foreign: "Write your email here",
+    native: "Напишите сюда свой адрес электронной почты",
+    additional: "Напішыце тут свой электронны ліст",
+  },
+  AUTH_PASSWORD: {
+    foreign: "Write your password here",
+    native: "Напишите здесь свой пароль",
+    additional: "Напішыце тут свой пароль",
+  },
+  BACK_BUTTON: {
+    foreign: 'Back',
+    native: 'Назад',
+    additional: 'Назад',
+},
 };
