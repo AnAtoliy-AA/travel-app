@@ -55,7 +55,7 @@ export interface CurrencyDescritpion {
 }
 
 export interface User {
-  name: string;
+  userName: string;
   email: string;
   password: string;
   imageSrc: string;

@@ -42,4 +42,12 @@ export const getAllCountriesInfo = () => async (
     dispatch(setCountriesInfoData(response));
   };
 
+  export const updateCountryMark = (countryId: string, token: string) => async (
+    dispatch: (arg0: { type: string; countryInfoList: any }) => void
+  ) => {
+    const response = await travelAppApi.updateCountryMark(countryId, token);
+  
+    // dispatch(setCountriesInfoData(response));
+  };
+
 export default countryListReducer;

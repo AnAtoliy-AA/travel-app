@@ -5,9 +5,9 @@ import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import CountryScreen from "./components/CountryScreen/CountryScreen";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import Login from "./Login/Login";
+import Login from "./components/Login/Login";
 import MainMenu from "./components/MainMenu/MainMenu";
-import Register from "./Register/Register";
+import Register from "./components/Register/Register";
 
 function App() {
   return (
