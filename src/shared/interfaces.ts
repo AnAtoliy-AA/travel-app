@@ -13,6 +13,13 @@ export interface Country {
       ru: CountryDescription;
       be: CountryDescription;
     };
+    marks: [
+      {
+        mark: string;
+        userId: string;
+        userName: string;
+      }
+    ]
   };
 }
 
@@ -57,3 +64,9 @@ export interface CurrencyDescritpion {
   local: number;
 }
 
+export interface User {
+  userName: string;
+  email: string;
+  password: string;
+  imageSrc: string;
+}
