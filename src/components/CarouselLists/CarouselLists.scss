@@ -1,14 +1,16 @@
-.carousel-countainer{
+.carousel-countainer {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
   width: 1200px;
-  p{
-    height: 120px;
-    overflow-y: hidden;
-    line-height: 20px;
-    position: relative;
-    &::after{
+
+  p {
+    // height: 120px;
+    // overflow-y: hidden;
+    // line-height: 20px;
+    // position: relative;
+
+    &::after {
       content: '. . .';
       position: absolute;
       width: 60px;
@@ -19,11 +21,9 @@
     }
   }
 }
-.slide{
-  cursor: pointer;
-}
-.slick-arrow{
-  &::before{
+
+.slick-arrow {
+  &::before {
     color: black;
   }
 }

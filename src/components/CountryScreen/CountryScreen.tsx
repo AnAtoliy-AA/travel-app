@@ -10,6 +10,9 @@ import Widget from '../Widget/Widget';
 import { connect } from 'react-redux';
 import { updateCountryMark } from './../../redux/countryList-reducer';
 
+import { Button, Typography, Icon } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 const CountryScreen: React.FC = (props: any) => {
   const activeCountryInfo =
     props.activeCountry.countryFullInfo.countryInfo[
@@ -25,9 +28,15 @@ const CountryScreen: React.FC = (props: any) => {
   return (
     <div className="CountryScreen">
       CountryScreen Component
-      <span>{activeCountryInfo.countryName}</span>
-      <span>{activeCountryInfo.capital}</span>
-      <span>{activeCountryInfo.aboutCountry}</span>
+      <Typography gutterBottom variant="h5" component="h2">
+        {activeCountryInfo.countryName}
+      </Typography>
+      <Typography gutterBottom variant="h5" component="h2">
+        {activeCountryInfo.capital}
+      </Typography>
+      <Typography variant="body1" color="textPrimary" component="p">
+        {activeCountryInfo.aboutCountry}
+      </Typography>
       <VideoPlayer source={activeCountryInfo.video} />
       <Widget
         country={activeCountryInfo.countryName}
@@ -44,7 +53,9 @@ const CountryScreen: React.FC = (props: any) => {
       />
       <CarouselLists attractions={activeCountryInfo.attractions} />
       <NavLink to="/" style={{ textDecoration: 'none' }}>
-        RETURN BACK
+        <Button size="large" color="primary" endIcon={<ArrowBackIcon />}>
+          RETURN BACK
+        </Button>
       </NavLink>
       //TODO
       <button
