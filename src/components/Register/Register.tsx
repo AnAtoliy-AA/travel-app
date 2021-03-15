@@ -2,11 +2,11 @@ import "./Register.scss";
 
 import { Button, TextField } from "@material-ui/core";
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
+import React, { useState } from "react";
 
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
 import { NavLink } from "react-router-dom";
-import React from "react";
 import { User } from "../../shared/interfaces";
 import { connect } from "react-redux";
 import { register } from "./../../redux/auth-reducer";
@@ -20,10 +20,16 @@ const Register: React.FC = () => (
 
 export const RegisterForm = (props: any) => {
   const { register, handleSubmit, errors } = useForm<User>();
+  const [photo, setPhoto] = useState('');
 
   const onSubmit = (data: User) => {
-    props.register(data.userName, data.email, data.password);
+    props.register(data.userName, data.email, data.password, photo);
   };
+  const onMainPhotoSelected = (e: any) => {
+    if (e.target.files.length) {
+      setPhoto(e.target.files[0]);
+    }
+}
   return (
     <div>
       {props.activeLanguage === LANGUAGE_CONFIG.native &&
@@ -47,6 +53,8 @@ export const RegisterForm = (props: any) => {
           {errors.email && errors.email.type === "required" && (
             <div className="error">Your must enter namel!.</div>
           )}
+          </div>
+          <div className="field">
           <TextField
             id="email"
             size="small"
@@ -76,6 +84,25 @@ export const RegisterForm = (props: any) => {
           {errors.password && errors.password.type === "required" && (
             <div className="error">Your must enter your password.</div>
           )}
+          
+        </div>
+        <div className="field">
+          <TextField
+            id="picture"
+            size="small"
+            name="picture"
+            type="file"
+            error={errors.password && true}
+            autoComplete="false"
+            onChange={onMainPhotoSelected}
+            // label="Write your password here"
+            variant="outlined"
+            // inputRef={register({ required: true })}
+          />
+          {errors.password && errors.password.type === "required" && (
+            <div className="error">Your must enter your password.</div>
+          )}
+          
         </div>
         <Button
           variant="contained"

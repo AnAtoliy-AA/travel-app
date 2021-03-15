@@ -1,11 +1,11 @@
 import { Country } from "./../shared/interfaces";
 import axios from "axios";
 
-const TRAVEL_APP_API = "https://travel-app-back-end.herokuapp.com/api/";
+export const TRAVEL_APP_API = "https://travel-app-back-end.herokuapp.com/";
 
 export const travelAppApi = {
   getAllCountries() {
-    return axios.get(`${TRAVEL_APP_API}countries`).then((response) => {
+    return axios.get(`${TRAVEL_APP_API}api/countries`).then((response) => {
       //   const allCountriesInfo = response.data.map((el: { list: Country[]; }) => {
       //     return el.list[0]
       //   })
@@ -15,7 +15,7 @@ export const travelAppApi = {
 
   login(email: string, password: string) {
     return axios
-      .post(`${TRAVEL_APP_API}auth/login`, {
+      .post(`${TRAVEL_APP_API}api/auth/login`, {
         email: email,
         password: password,
       })
@@ -27,13 +27,20 @@ export const travelAppApi = {
       });
   },
 
-  register(userName: string, email: string, password: string) {
-    return axios
-      .post(`${TRAVEL_APP_API}auth/register`, {
-        userName: userName,
-        email: email,
-        password: password,
-      })
+  register(userName: string, email: string, password: string, image?: any) {
+    const formData = new FormData();
+    formData.append("userName", userName);
+    formData.append("email", email);
+    formData.append("password", password);
+    if (image) {
+      formData.append("image", image);
+    }
+    return axios({
+      method: "post",
+      url: `${TRAVEL_APP_API}api/auth/register`,
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    })
       .then((response) => {
         return response.data;
       })
@@ -51,7 +58,7 @@ export const travelAppApi = {
   ) {
     axios
       .patch(
-        `${TRAVEL_APP_API}countries/`,
+        `${TRAVEL_APP_API}api/countries/`,
         {
           id: countryId,
           mark: userMark,
