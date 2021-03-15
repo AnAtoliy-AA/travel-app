@@ -8,7 +8,7 @@ import React from 'react';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import Widget from '../Widget/Widget';
 import { connect } from 'react-redux';
-import {updateCountryMark} from './../../redux/countryList-reducer';
+import { updateCountryMark } from './../../redux/countryList-reducer';
 
 const CountryScreen: React.FC = (props: any) => {
   const activeCountryInfo =
@@ -37,16 +37,29 @@ const CountryScreen: React.FC = (props: any) => {
         timezone={timezoneCapital}
       />
       <Map
-        country={activeCountryInfo.countryName}
+        capitalEng={activeCapitalEng}
         capital={activeCountryInfo.capital}
         coordsCapital={coordsCapital}
+        country={activeCountryInfo.countryName}
       />
       <CarouselLists attractions={activeCountryInfo.attractions} />
       <NavLink to="/" style={{ textDecoration: 'none' }}>
         RETURN BACK
       </NavLink>
       //TODO
-      <button onClick={() => props.updateCountryMark(props.activeCountry._id, props.authStore.userData.token, '4', props.authStore.userData.userId, props.authStore.userData.userName)}>Set 4</button>
+      <button
+        onClick={() =>
+          props.updateCountryMark(
+            props.activeCountry._id,
+            props.authStore.userData.token,
+            '4',
+            props.authStore.userData.userId,
+            props.authStore.userData.userName
+          )
+        }
+      >
+        Set 4
+      </button>
     </div>
   );
 };
@@ -62,4 +75,4 @@ let mapStateToProps = (state: {
     authStore: state.authStore,
   };
 };
-export default connect(mapStateToProps, {updateCountryMark})(CountryScreen);
+export default connect(mapStateToProps, { updateCountryMark })(CountryScreen);
