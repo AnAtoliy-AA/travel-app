@@ -1,14 +1,15 @@
 import "./Header.scss";
 
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
+import { NavLink, Route } from "react-router-dom";
 import React, { useState } from "react";
 
 import Alert from "@material-ui/lab/Alert";
 import { Button } from "@material-ui/core";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
-import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { setActiveLanguage } from "../../redux/language-reducer";
+import { setSearchFormTerm } from "../../redux/searchForm-reducer";
 
 const Header: React.FC = (props: any) => {
   const [activeLanguageInSelect, setActiveLanguageInSelect] = useState(
@@ -22,8 +23,43 @@ const Header: React.FC = (props: any) => {
     props.setActiveLanguage(e.target.value);
   };
 
+  const handleOnInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const searchValue = event.target.value;
+    props.setSearchFormTerm(searchValue);
+  };
+
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+  };
+
   return (
     <div className="header">
+      <Route exact path="/">
+        <form onSubmit={handleOnSubmit}>
+          <input
+            type="text"
+            value={props.searchForm.searchTerm}
+            autoFocus
+            autoComplete="off"
+            placeholder={
+              props.activeLanguage === LANGUAGE_CONFIG.native
+                ? WORDS_CONFIG.SEARCH_INPUT_TEXT.native
+                : props.activeLanguage === LANGUAGE_CONFIG.foreign
+                ? WORDS_CONFIG.SEARCH_INPUT_TEXT.foreign
+                : WORDS_CONFIG.SEARCH_INPUT_TEXT.additional
+            }
+            onChange={handleOnInputChange}
+            className="search__input"
+          />
+          <button type="submit">
+            {props.activeLanguage === LANGUAGE_CONFIG.native
+              ? WORDS_CONFIG.SEARCH_BUTTON.native
+              : props.activeLanguage === LANGUAGE_CONFIG.foreign
+              ? WORDS_CONFIG.SEARCH_BUTTON.foreign
+              : WORDS_CONFIG.SEARCH_BUTTON.additional}
+          </button>
+        </form>
+      </Route>
       {props.authStore.isAuthorized ? (
         <Alert severity="success">
           {props.activeLanguage === LANGUAGE_CONFIG.native &&
@@ -115,13 +151,19 @@ const Header: React.FC = (props: any) => {
   );
 };
 
-let mapStateToProps = (state: { activeLanguage: any; authStore: any }) => {
+let mapStateToProps = (state: {
+  activeLanguage: any;
+  authStore: any;
+  searchForm: any;
+}) => {
   return {
     activeLanguage: state.activeLanguage.activeLanguage,
     authStore: state.authStore,
+    searchForm: state.searchForm,
   };
 };
 
 export default connect(mapStateToProps, {
   setActiveLanguage,
+  setSearchFormTerm,
 })(Header);

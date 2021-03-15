@@ -14,7 +14,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
 const MainMenu: React.FC = (props: any) => {
-  const [searchTerm, setSearchTerm] = useState("");
+
 
   useEffect(() => {
     props.getAllCountriesInfo();
@@ -24,48 +24,17 @@ const MainMenu: React.FC = (props: any) => {
     props.setActiveCountry(country);
   };
 
-  const handleOnInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchValue = event.target.value;
-    setSearchTerm(searchValue);
-  };
 
-  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-  };
 
   const activeLanguage: string = props.activeLanguage.activeLanguage;
   return (
     <div className="MainMenu">
-      <form onSubmit={handleOnSubmit}>
-        <input
-          type="text"
-          value={searchTerm}
-          autoFocus
-          autoComplete="off"
-          placeholder={
-            activeLanguage === LANGUAGE_CONFIG.native
-              ? WORDS_CONFIG.SEARCH_INPUT_TEXT.native
-              : activeLanguage === LANGUAGE_CONFIG.foreign
-              ? WORDS_CONFIG.SEARCH_INPUT_TEXT.foreign
-              : WORDS_CONFIG.SEARCH_INPUT_TEXT.additional
-          }
-          onChange={handleOnInputChange}
-          className="search__input"
-        />
-        <button type="submit">
-          {activeLanguage === LANGUAGE_CONFIG.native
-            ? WORDS_CONFIG.SEARCH_BUTTON.native
-            : activeLanguage === LANGUAGE_CONFIG.foreign
-            ? WORDS_CONFIG.SEARCH_BUTTON.foreign
-            : WORDS_CONFIG.SEARCH_BUTTON.additional}
-        </button>
-      </form>
       <div className="cards__container">
         {props.countryInfoList.map((c: any) => {
           const countryInfo = c.countryFullInfo.countryInfo[activeLanguage];
           if (
-            countryInfo.countryName.toLowerCase().includes(searchTerm) ||
-            countryInfo.capital.toLowerCase().includes(searchTerm)
+            countryInfo.countryName.toLowerCase().includes(props.searchForm.searchTerm) ||
+            countryInfo.capital.toLowerCase().includes(props.searchForm.searchTerm)
           ) {
             return (
               <div
@@ -112,11 +81,13 @@ const MainMenu: React.FC = (props: any) => {
 let mapStateToProps = (state: {
   countryList: { countryInfoList: Country[]; activeCountry: Country };
   activeLanguage: any;
+  searchForm: any
 }) => {
   return {
     countryInfoList: state.countryList.countryInfoList,
     activeCountry: state.countryList.activeCountry,
     activeLanguage: state.activeLanguage,
+    searchForm: state.searchForm
   };
 };
 
