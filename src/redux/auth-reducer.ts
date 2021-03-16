@@ -44,12 +44,11 @@ export const login = (email: string, password: string) => async (
   };
 
   export const register = (userName: string, email: string, password: string, image?: any) => async (
-    dispatch: (arg0: { type: string; token: string }) => string
+    dispatch: (arg0: { type: string; userData: string  }) => string
   ) => {
     const response = await travelAppApi.register(userName, email, password, image);
   
-    // dispatch(setUserData(response));
-    // dispatch(setIsAuthorized(true));
+    dispatch(setUserData(response));
   };
 
 export default authReducer;
