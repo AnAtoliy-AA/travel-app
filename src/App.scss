@@ -3,13 +3,5 @@
 }
 
 .app-wrapper {
-
-  display: grid;
-  grid-template-areas:
-    'header'
-    'main'
-    'footer';
-  grid-template-rows: 10% 80% 10%;
-  height: 100vh;
   margin: 0;
 }
