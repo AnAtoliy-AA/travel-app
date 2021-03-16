@@ -1,17 +1,19 @@
 import './CountryScreen.scss';
 
+import { Button, Typography } from '@material-ui/core';
+
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import CarouselLists from '../CarouselLists/CarouselLists';
 import { Country } from '../../shared/interfaces';
 import Map from '../Map/Map';
 import { NavLink } from 'react-router-dom';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import React from 'react';
+import StopIcon from '@material-ui/icons/Stop';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import Widget from '../Widget/Widget';
 import { connect } from 'react-redux';
 import { updateCountryMark } from './../../redux/countryList-reducer';
-
-import { Button, Typography, Icon } from '@material-ui/core';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const CountryScreen: React.FC = (props: any) => {
   const activeCountryInfo =
@@ -25,6 +27,16 @@ const CountryScreen: React.FC = (props: any) => {
   const timezoneCapital = activeCountryInfo.timezone;
   const { lat, long } = props.activeCountry.countryFullInfo;
   const coordsCapital = [lat, long];
+
+  const handleStartSpeaking = () => {
+    let utterance = new SpeechSynthesisUtterance(activeCountryInfo.aboutCountry);
+    speechSynthesis.speak(utterance);
+  }
+
+  const handleStopSpeaking = () => {
+    speechSynthesis.cancel()
+  }
+
   return (
     <div className="CountryScreen">
       CountryScreen Component
@@ -36,6 +48,22 @@ const CountryScreen: React.FC = (props: any) => {
       </Typography>
       <Typography variant="body1" color="textPrimary" component="p">
         {activeCountryInfo.aboutCountry}
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={handleStartSpeaking}
+          startIcon={<PlayArrowIcon />}
+        >
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={handleStopSpeaking}
+          startIcon={<StopIcon />}
+        >
+        </Button>
       </Typography>
       <VideoPlayer source={activeCountryInfo.video} />
       <Widget
