@@ -8,7 +8,6 @@ import { register } from "./../../redux/auth-reducer";
 
 const Register: React.FC = (props: any) => (
   <div className="register">
-    <RegisterForm />
     {props.authStore.isAuthorized ? <Redirect to="/" /> : <RegisterForm />}
   </div>
 );
