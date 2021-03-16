@@ -16,6 +16,7 @@ import { setActiveLanguage } from "../../redux/language-reducer";
 import { setSearchFormTerm } from "../../redux/searchForm-reducer";
 
 const Header: React.FC = (props: any) => {
+  const [isMenuHidden, setIsMenuHidden] = useState(true);
   const [activeLanguageInSelect, setActiveLanguageInSelect] = useState(
     props.activeLanguage
   );
@@ -26,120 +27,143 @@ const Header: React.FC = (props: any) => {
     setActiveLanguageInSelect(e.target.value);
     props.setActiveLanguage(e.target.value);
   };
+  const toggleMenu = () => {
+    setIsMenuHidden(!isMenuHidden);
+  };
 
   return (
     <div className="header">
-      <NavLink to="/" style={{ textDecoration: "none" }}>
-        <img src={logo} alt="main-logo" className="main__logo" />
-      </NavLink>
-      <Route exact path="/">
-        <SearchForm />
-      </Route>
-      {props.authStore.isAuthorized ? (
-        <>
-          <Alert severity="success">
-            {props.activeLanguage === LANGUAGE_CONFIG.native &&
-              WORDS_CONFIG.AUTH_SUCCESS.native}
-            {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
-              WORDS_CONFIG.AUTH_SUCCESS.foreign}
-            {props.activeLanguage === LANGUAGE_CONFIG.additional &&
-              WORDS_CONFIG.AUTH_SUCCESS.additional}{" "}
-            {props.authStore.userData.userName}
-          </Alert>
-          <img
-            className="profilePhoto"
-            src={`${TRAVEL_APP_API}${props.authStore.userData.imageSrc}`}
-            alt="ava"
-          />
-        </>
-      ) : (
-        <Alert severity="error">
-          {props.activeLanguage === LANGUAGE_CONFIG.native &&
-            WORDS_CONFIG.AUTH_FAIL.native}
-          {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
-            WORDS_CONFIG.AUTH_FAIL.foreign}
-          {props.activeLanguage === LANGUAGE_CONFIG.additional &&
-            WORDS_CONFIG.AUTH_FAIL.additional}
-        </Alert>
-      )}
-      <InputLabel id="demo-simple-select-filled-label">
-        {props.activeLanguage === LANGUAGE_CONFIG.native
-          ? WORDS_CONFIG.SELECT_LANGUAGE.native
-          : props.activeLanguage === LANGUAGE_CONFIG.foreign
-          ? WORDS_CONFIG.SELECT_LANGUAGE.foreign
-          : WORDS_CONFIG.SELECT_LANGUAGE.additional}
-      </InputLabel>
-      <Select
-        labelId="demo-simple-select-filled-label"
-        id="demo-simple-select-filled"
-        name="fieldSize"
-        value={activeLanguageInSelect}
-        onChange={(e) => handleUpdatActiveLanguageInSelect(e)}
+      <div className="menu__button">
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={toggleMenu}
+        >
+          {isMenuHidden ? "show menu" : "hide menu"}
+        </Button>
+      </div>
+      <div
+        className={isMenuHidden ? "header-wrapper_active" : "header-wrapper"}
       >
-        <MenuItem value={LANGUAGE_CONFIG.foreign}>
-          {LANGUAGE_CONFIG.foreign}
-        </MenuItem>
-        <MenuItem value={LANGUAGE_CONFIG.native}>
-          {LANGUAGE_CONFIG.native}
-        </MenuItem>
-        <MenuItem value={LANGUAGE_CONFIG.additional}>
-          {LANGUAGE_CONFIG.additional}
-        </MenuItem>
-      </Select>
-      {!props.authStore.isAuthorized ? (
-        <div className="header-nav">
-          <NavLink to="/login" style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              type="submit"
-              startIcon={<ExitToAppTwoToneIcon />}
-            >
+        <NavLink to="/" style={{ textDecoration: "none" }}>
+          <img src={logo} alt="main-logo" className="main__logo" />
+        </NavLink>
+        <Route exact path="/">
+          <div className="background__layout">
+            <SearchForm />
+          </div>
+        </Route>
+        {props.authStore.isAuthorized ? (
+          <>
+            <Alert severity="success">
               {props.activeLanguage === LANGUAGE_CONFIG.native &&
-                WORDS_CONFIG.LOGIN_BUTTON.native}
+                WORDS_CONFIG.AUTH_SUCCESS.native}
               {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
-                WORDS_CONFIG.LOGIN_BUTTON.foreign}
+                WORDS_CONFIG.AUTH_SUCCESS.foreign}
               {props.activeLanguage === LANGUAGE_CONFIG.additional &&
-                WORDS_CONFIG.LOGIN_BUTTON.additional}
-            </Button>
-          </NavLink>
-          <NavLink to="/register" style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              type="submit"
-              startIcon={<ExitToAppTwoToneIcon />}
-            >
-              {props.activeLanguage === LANGUAGE_CONFIG.native &&
-                WORDS_CONFIG.REGISTER_BUTTON.native}
-              {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
-                WORDS_CONFIG.REGISTER_BUTTON.foreign}
-              {props.activeLanguage === LANGUAGE_CONFIG.additional &&
-                WORDS_CONFIG.REGISTER_BUTTON.additional}
-            </Button>
-          </NavLink>
-        </div>
-      ) : (
-        <div className="header-nav">
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            type="submit"
-            onClick={props.logout}
-            startIcon={<ExitToAppTwoToneIcon />}
-          >
+                WORDS_CONFIG.AUTH_SUCCESS.additional}{" "}
+              {props.authStore.userData.userName}
+            </Alert>
+            <img
+              className="profilePhoto"
+              src={`${TRAVEL_APP_API}${props.authStore.userData.imageSrc}`}
+              alt="ava"
+            />
+          </>
+        ) : (
+          <Alert severity="error">
             {props.activeLanguage === LANGUAGE_CONFIG.native &&
-              WORDS_CONFIG.LOGOUT_BUTTON.native}
+              WORDS_CONFIG.AUTH_FAIL.native}
             {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
-              WORDS_CONFIG.LOGOUT_BUTTON.foreign}
+              WORDS_CONFIG.AUTH_FAIL.foreign}
             {props.activeLanguage === LANGUAGE_CONFIG.additional &&
-              WORDS_CONFIG.LOGOUT_BUTTON.additional}
-          </Button>
-        </div>
-      )}
+              WORDS_CONFIG.AUTH_FAIL.additional}
+          </Alert>
+        )}
+        <InputLabel
+          id="demo-simple-select-filled-label"
+          className="background__layout"
+        >
+          {props.activeLanguage === LANGUAGE_CONFIG.native
+            ? WORDS_CONFIG.SELECT_LANGUAGE.native
+            : props.activeLanguage === LANGUAGE_CONFIG.foreign
+            ? WORDS_CONFIG.SELECT_LANGUAGE.foreign
+            : WORDS_CONFIG.SELECT_LANGUAGE.additional}
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-filled-label"
+          id="demo-simple-select-filled"
+          name="fieldSize"
+          value={activeLanguageInSelect}
+          className="background__layout"
+          onChange={(e) => handleUpdatActiveLanguageInSelect(e)}
+        >
+          <MenuItem value={LANGUAGE_CONFIG.foreign}>
+            {LANGUAGE_CONFIG.foreign}
+          </MenuItem>
+          <MenuItem value={LANGUAGE_CONFIG.native}>
+            {LANGUAGE_CONFIG.native}
+          </MenuItem>
+          <MenuItem value={LANGUAGE_CONFIG.additional}>
+            {LANGUAGE_CONFIG.additional}
+          </MenuItem>
+        </Select>
+        {!props.authStore.isAuthorized ? (
+          <div className="header-nav">
+            <NavLink to="/login" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                type="submit"
+                startIcon={<ExitToAppTwoToneIcon />}
+              >
+                {props.activeLanguage === LANGUAGE_CONFIG.native &&
+                  WORDS_CONFIG.LOGIN_BUTTON.native}
+                {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
+                  WORDS_CONFIG.LOGIN_BUTTON.foreign}
+                {props.activeLanguage === LANGUAGE_CONFIG.additional &&
+                  WORDS_CONFIG.LOGIN_BUTTON.additional}
+              </Button>
+            </NavLink>
+            <NavLink to="/register" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                type="submit"
+                startIcon={<ExitToAppTwoToneIcon />}
+              >
+                {props.activeLanguage === LANGUAGE_CONFIG.native &&
+                  WORDS_CONFIG.REGISTER_BUTTON.native}
+                {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
+                  WORDS_CONFIG.REGISTER_BUTTON.foreign}
+                {props.activeLanguage === LANGUAGE_CONFIG.additional &&
+                  WORDS_CONFIG.REGISTER_BUTTON.additional}
+              </Button>
+            </NavLink>
+          </div>
+        ) : (
+          <div className="header-nav">
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              type="submit"
+              onClick={props.logout}
+              startIcon={<ExitToAppTwoToneIcon />}
+            >
+              {props.activeLanguage === LANGUAGE_CONFIG.native &&
+                WORDS_CONFIG.LOGOUT_BUTTON.native}
+              {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
+                WORDS_CONFIG.LOGOUT_BUTTON.foreign}
+              {props.activeLanguage === LANGUAGE_CONFIG.additional &&
+                WORDS_CONFIG.LOGOUT_BUTTON.additional}
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

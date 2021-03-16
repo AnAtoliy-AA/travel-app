@@ -1,8 +1,9 @@
 import "./SearchForm.scss";
 
-import { Button, Input } from "@material-ui/core";
+import { Button, IconButton, Input, InputAdornment } from "@material-ui/core";
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../../shared/words-config";
 
+import ClearIcon from '@material-ui/icons/Clear';
 import React from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import { connect } from "react-redux";
@@ -13,6 +14,10 @@ const SearchForm: React.FC = (props: any) => {
     const searchValue = event.target.value;
     props.setSearchFormTerm(searchValue);
   };
+
+  const handleClickClearText = () => {
+    props.setSearchFormTerm('');
+  }
 
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -25,6 +30,7 @@ const SearchForm: React.FC = (props: any) => {
         autoFocus
         autoComplete="off"
         fullWidth
+        value={props.searchForm.searchTerm}
         placeholder={
           props.activeLanguage === LANGUAGE_CONFIG.native
             ? WORDS_CONFIG.SEARCH_INPUT_TEXT.native
@@ -33,6 +39,16 @@ const SearchForm: React.FC = (props: any) => {
             : WORDS_CONFIG.SEARCH_INPUT_TEXT.additional
         }
         onChange={handleOnInputChange}
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={handleClickClearText}
+            >
+              <ClearIcon />
+            </IconButton>
+          </InputAdornment>
+        }
       />
       <Button
         variant="contained"

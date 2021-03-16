@@ -4,7 +4,9 @@ import CarouselLists from '../CarouselLists/CarouselLists';
 import { Country } from '../../shared/interfaces';
 import Map from '../Map/Map';
 import { NavLink } from 'react-router-dom';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import React from 'react';
+import StopIcon from '@material-ui/icons/Stop';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import Widget from '../Widget/Widget';
 import { connect } from 'react-redux';
@@ -42,6 +44,18 @@ const CountryScreen: React.FC = (props: any) => {
   const timezoneCapital = activeCountryInfo.timezone;
   const { lat, long } = props.activeCountry.countryFullInfo;
   const coordsCapital = [lat, long];
+
+  const handleStartSpeaking = () => {
+    let utterance = new SpeechSynthesisUtterance(
+      activeCountryInfo.aboutCountry
+    );
+    speechSynthesis.speak(utterance);
+  };
+
+  const handleStopSpeaking = () => {
+    speechSynthesis.cancel();
+  };
+
   return (
     <Container maxWidth="xl">
       <div className="CountryScreen">
@@ -54,6 +68,22 @@ const CountryScreen: React.FC = (props: any) => {
           <Typography variant="h5" component="h3">
             {activeCountryInfo.capital}
           </Typography>
+        </div>
+        <div className="CountryScreen__speack">
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={handleStartSpeaking}
+            startIcon={<PlayArrowIcon />}
+          ></Button>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            onClick={handleStopSpeaking}
+            startIcon={<StopIcon />}
+          ></Button>
         </div>
         <Widget
           country={activeCountryInfo.countryName}
