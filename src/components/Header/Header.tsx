@@ -29,8 +29,8 @@ const Header: React.FC = (props: any) => {
 
   return (
     <div className="header">
-      <NavLink to="/register" style={{ textDecoration: "none" }}>
-        <img src={logo} alt="main logo" className="main__logo" />
+      <NavLink to="/" style={{ textDecoration: "none" }}>
+        <img src={logo} alt="main-logo" className="main__logo" />
       </NavLink>
       <Route exact path="/">
         <SearchForm />
