@@ -56,7 +56,6 @@ const Map: React.FC<TProps> = ({
         default:
           break;
       }
-      console.log(c);
       setMapCountries(jsonData);
     };
 
@@ -67,7 +66,7 @@ const Map: React.FC<TProps> = ({
     <div className="map">
       <MapContainer
         center={coordsCapital}
-        zoom={6}
+        zoom={5}
         maxZoom={22}
         attributionControl={true}
         zoomControl={true}

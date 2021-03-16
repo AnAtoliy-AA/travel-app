@@ -1,4 +1,36 @@
 .CountryScreen {
-    display: flex;
-    flex-direction: column;
+    padding-top: 10vh;
+    display: grid;
+    grid-template-rows: 40px 40px 200px 300px 40px;
+    grid-template-columns: repeat(6, minmax(100px, 3fr));
+    grid-gap: 0.5rem;
+}
+
+.CountryScreen__name {
+    grid-row: 1/2;
+}
+
+.CountryScreen__about {
+    grid-row: 3/5;
+    grid-column: 1/4;
+}
+
+.CountryScreen__link {
+    grid-row: 0;
+    grid-column: 3/5;
+}
+
+.CountryScreen__btn {
+    grid-row: 0;
+    grid-column: 6/7;
+}
+
+.CountryScreen__speack {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    align-self: center;
+
+    &>button{
+        margin-right: 1rem;
+    }
 }

@@ -1,9 +1,12 @@
 .map{
-  width: 640px;
-  height: 480px;
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
   border: 2px solid green;
   border-radius: 2px;
   position: relative;
+  grid-row: 3/5;
+  grid-column: 6/7;
 }
 .leaflet-container {
   width: 100%;

@@ -18,14 +18,17 @@ import {
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 280,
     cursor: 'pointer',
   },
   desc: {
-    height: '60px',
+    height: '40px',
     overflowY: 'hidden',
     lineHeight: '20px',
     position: 'relative',
+  },
+  title: {
+    height: '55px',
   },
 });
 
@@ -51,12 +54,17 @@ const CarouselLists: React.FC<TProps> = ({ attractions }) => {
             <CardMedia
               component="img"
               alt={item.name}
-              height="180"
+              height="120"
               image={item.image}
               title={item.name}
             />
             <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
+              <Typography
+                gutterBottom
+                variant="subtitle1"
+                component="h2"
+                className={classes.title}
+              >
                 {item.name}
               </Typography>
               <Typography
