@@ -2,10 +2,26 @@
 
 .header {
     height: 10vh;
+    position: fixed;
+    width: 100vw;
+    background-color: $primary-color;
+    z-index: 10;
+}
+
+.header-wrapper {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: $primary-color;
+}
+
+.header-wrapper_active {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu__button {
+    display: none;
 }
 
 .main__logo {
@@ -16,5 +32,31 @@
 .profilePhoto {
     width: 50px;
     height: 50px;
+    border-radius: 0.2em;
+}
+
+
+.background__layout {
+    background-color: $primary-color;
     border-radius: 0.5em;
+}
+
+@media screen and (max-width: 767px) {
+    .menu__button {
+        display: block;
+    }
+
+    .header-wrapper {
+        flex-direction: column;
+        justify-content: space-around;
+        height: 90vh;
+        width: 100vw;
+        position: fixed;
+        z-index: 100;
+        transition: all 0.3s;
+    }
+
+    .header-wrapper_active {
+        display: none;
+    }
 }
