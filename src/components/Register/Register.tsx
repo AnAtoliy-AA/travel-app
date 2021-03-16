@@ -31,7 +31,7 @@ export const RegisterForm = (props: any) => {
     }
 }
   return (
-    <div>
+    <div className="register">
       {props.activeLanguage === LANGUAGE_CONFIG.native &&
         WORDS_CONFIG.REGISTER_BUTTON.native}
       {props.activeLanguage === LANGUAGE_CONFIG.foreign &&

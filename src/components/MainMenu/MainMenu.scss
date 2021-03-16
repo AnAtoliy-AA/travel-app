@@ -7,12 +7,14 @@
     }
 
     .country-flag {
-        max-width: 40px;
+        max-height: 30px;
+        margin-right: 3vw;
     }
 
     .cards__container {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .main__country_card {

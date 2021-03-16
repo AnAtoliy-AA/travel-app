@@ -76,8 +76,18 @@ export const WORDS_CONFIG = {
     additional: "Напішыце тут свой пароль",
   },
   BACK_BUTTON: {
-    foreign: 'Back',
-    native: 'Назад',
-    additional: 'Назад',
-},
+    foreign: "Back",
+    native: "Назад",
+    additional: "Назад",
+  },
+  LEARN_MORE: {
+    foreign: "Learn more...",
+    native: "Узнать больше...",
+    additional: "Даведайся больш ...",
+  },
+  SELECT_LANGUAGE: {
+    foreign: "Select language:",
+    native: "Выбрать язык:",
+    additional: "Выберыце мову:",
+  },
 };

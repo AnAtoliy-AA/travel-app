@@ -1,7 +1,7 @@
 @import "../../styles/index.scss";
 
 .footer {
-  grid-area: footer;
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   justify-content: space-around;
@@ -12,9 +12,9 @@
     height: 25px;
     pointer-events: none;
   }
-  
+
   .about-us {
-  
+
     a {
       text-decoration: none;
       display: flex;
