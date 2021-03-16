@@ -1,4 +1,20 @@
-.widget-container{
+.widget-weather{
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 4;
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+.widget-currancy {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 6;
+  grid-column-end: 7;
+}
+
+.widget-locale{
+  grid-row: 2/3;
+  grid-column: 1/3;
 }

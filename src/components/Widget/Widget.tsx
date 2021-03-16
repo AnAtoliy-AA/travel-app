@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import './Widget.scss';
 import { getWeather, getCurrancy } from '../../services/fetchAPI';
 import { getIcon } from '../../services/getIcons';
@@ -7,6 +7,8 @@ import {
   TimeDescritpion,
   CurrencyDescritpion,
 } from '../../shared/interfaces';
+
+import { Typography } from '@material-ui/core';
 
 type TProps = {
   capital: string;
@@ -151,17 +153,20 @@ const Widget: React.FC<TProps> = ({
     };
 
     return (
-      <div>
+      <Fragment>
+        <Typography variant="body1" color="textPrimary" component="p">
+          {tempC} &deg;C
+        </Typography>
         {weatherImageIcon()}
-        <p>
-          Temperature <span>{tempC} &deg;C</span>
-          <br />
-          Wind <span>{wind} m/s</span>
-          <br />
-          Humidity <span>{humidity} %</span>
-          <br />
-        </p>
-      </div>
+        <div>
+          <Typography variant="body1" color="textPrimary" component="p">
+            {wind} m/s
+          </Typography>
+          <Typography variant="body1" color="textPrimary" component="p">
+            {humidity} %
+          </Typography>
+        </div>
+      </Fragment>
     );
   };
 
@@ -192,54 +197,48 @@ const Widget: React.FC<TProps> = ({
     const currensyRUB = ((currensyUSD * 10) / currensyUSDRUB).toFixed(1);
 
     return (
-      <div>
-        <p>
-          <span>{currensyUSD}</span>
-          {localCurrancySymbol(currancy)} - <span>10</span>
-          {localCurrancySymbol('USD')} <br />
-          <span>{currensyEUR}</span>
-          {localCurrancySymbol(currancy)} - <span>10</span>
-          {localCurrancySymbol('EUR')} <br />
-          <span>{currensyRUB}</span>
-          {localCurrancySymbol(currancy)}- <span>100</span>
-          {localCurrancySymbol('RUB')} <br />
-        </p>
-      </div>
+      <Fragment>
+        <Typography variant="body1" color="textPrimary" component="p">
+          {currensyUSD} {localCurrancySymbol(currancy)} - 10{' '}
+          {localCurrancySymbol('USD')}
+        </Typography>
+        <Typography variant="body1" color="textPrimary" component="p">
+          {currensyEUR} {localCurrancySymbol(currancy)} - 10{' '}
+          {localCurrancySymbol('EUR')}
+        </Typography>
+        <Typography variant="body1" color="textPrimary" component="p">
+          {currensyRUB} {localCurrancySymbol(currancy)}- 100{' '}
+          {localCurrancySymbol('RUB')}
+        </Typography>
+      </Fragment>
     );
   };
 
   const widgetClock = () => {
     const { month, day, year, hour, min, sec } = clockData;
     return (
-      <div className="local-clock">
-        <p>
-          {day} - {month} - {year}
-        </p>{' '}
-        <p>
-          {hour} : {min} : {sec}
-        </p>
-      </div>
+      <Fragment>
+        <Typography variant="body1" color="textPrimary" component="p">
+          {day} - {month} - {year} {hour} : {min} : {sec}
+        </Typography>
+      </Fragment>
     );
   };
   return (
-    <div className="widget-container">
-      Widget
+    <React.Fragment>
       <div className="widget-weather">
-        <p>Weather in {capital}</p>
         {!loadingWeather && <p>Loading...</p>}
         {loadingWeather && widgetWeather()}
       </div>
       <div className="widget-currancy">
-        <p>Currency exchange</p>
         {!loadingCurrancy && <p>Loading...</p>}
         {loadingCurrancy && widgetCurrancy()}
       </div>
       <div className="widget-locale">
-        <p>Time in {capital}</p>
         {!loadingClock && <p>Loading...</p>}
         {loadingClock && widgetClock()}
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
