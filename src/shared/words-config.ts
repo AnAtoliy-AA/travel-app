@@ -90,4 +90,19 @@ export const WORDS_CONFIG = {
     native: "Выбрать язык:",
     additional: "Выберыце мову:",
   },
+  WRIGHT_NAME: {
+    foreign: "Write your name heare:",
+    native: "Напишите свое имя здесь:",
+    additional: "Напішыце сваё імя тут:",
+  },
+  WRIGHT_EMAIL: {
+    foreign: "Write your email heare:",
+    native: "Напишите свою эл. почту:",
+    additional: "Напішыце вашу эл. пошту:",
+  },
+  WRIGHT_PASSWORD: {
+    foreign: "Write your password here:",
+    native: "Напишите свой пароль:",
+    additional: "Напішыце тут свой пароль:",
+  },
 };

@@ -35,7 +35,14 @@ const LoginForm = (props: any) => {
             name="email"
             error={errors.email && true}
             autoComplete="false"
-            label="Write your email here"
+           
+            label={
+              props.activeLanguage === LANGUAGE_CONFIG.native
+                ? WORDS_CONFIG.WRIGHT_EMAIL.native
+                : props.activeLanguage === LANGUAGE_CONFIG.foreign
+                ? WORDS_CONFIG.WRIGHT_EMAIL.foreign
+                : WORDS_CONFIG.WRIGHT_EMAIL.additional
+            }
             variant="outlined"
             inputRef={register({ required: true })}
           />
@@ -51,7 +58,13 @@ const LoginForm = (props: any) => {
             type="password"
             error={errors.password && true}
             autoComplete="false"
-            label="Write your password here"
+            label={
+              props.activeLanguage === LANGUAGE_CONFIG.native
+                ? WORDS_CONFIG.WRIGHT_PASSWORD.native
+                : props.activeLanguage === LANGUAGE_CONFIG.foreign
+                ? WORDS_CONFIG.WRIGHT_PASSWORD.foreign
+                : WORDS_CONFIG.WRIGHT_PASSWORD.additional
+            }
             variant="outlined"
             inputRef={register({ required: true })}
           />
