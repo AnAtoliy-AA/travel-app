@@ -49,10 +49,11 @@
     .header-wrapper {
         flex-direction: column;
         justify-content: space-around;
-        height: 90vh;
-        width: 100vw;
+        height: 88vh;
+        width: 40vw;
         position: fixed;
         z-index: 100;
+        background-color: $primary-color;
         transition: all 0.3s;
     }
 

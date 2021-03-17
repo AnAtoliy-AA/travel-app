@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 import Alert from "@material-ui/lab/Alert";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
+import FormatLineSpacingIcon from '@material-ui/icons/FormatLineSpacing';
 import SearchForm from "./SearchForm/SearchForm";
 import { TRAVEL_APP_API } from "../../services/travel-app-api";
 import { connect } from "react-redux";
@@ -34,14 +35,35 @@ const Header: React.FC = (props: any) => {
   return (
     <div className="header">
       <div className="menu__button">
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          onClick={toggleMenu}
-        >
-          {isMenuHidden ? "show menu" : "hide menu"}
-        </Button>
+        {isMenuHidden ? (
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            startIcon={<FormatLineSpacingIcon />}
+            onClick={toggleMenu}
+          >
+            {props.activeLanguage === LANGUAGE_CONFIG.native
+              ? WORDS_CONFIG.HIDE_MENU.native
+              : props.activeLanguage === LANGUAGE_CONFIG.foreign
+              ? WORDS_CONFIG.HIDE_MENU.foreign
+              : WORDS_CONFIG.HIDE_MENU.additional}
+          </Button>
+        ) : (
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            startIcon={<FormatLineSpacingIcon />}
+            onClick={toggleMenu}
+          >
+            {props.activeLanguage === LANGUAGE_CONFIG.native
+              ? WORDS_CONFIG.HIDE_MENU.native
+              : props.activeLanguage === LANGUAGE_CONFIG.foreign
+              ? WORDS_CONFIG.HIDE_MENU.foreign
+              : WORDS_CONFIG.HIDE_MENU.additional}
+          </Button>
+        )}
       </div>
       <div
         className={isMenuHidden ? "header-wrapper_active" : "header-wrapper"}
@@ -100,13 +122,25 @@ const Header: React.FC = (props: any) => {
           onChange={(e) => handleUpdatActiveLanguageInSelect(e)}
         >
           <MenuItem value={LANGUAGE_CONFIG.foreign}>
-            {LANGUAGE_CONFIG.foreign}
+            {props.activeLanguage === LANGUAGE_CONFIG.native
+              ? WORDS_CONFIG.FOREIGN_LANGUAGE.native
+              : props.activeLanguage === LANGUAGE_CONFIG.foreign
+              ? WORDS_CONFIG.FOREIGN_LANGUAGE.foreign
+              : WORDS_CONFIG.FOREIGN_LANGUAGE.additional}
           </MenuItem>
           <MenuItem value={LANGUAGE_CONFIG.native}>
-            {LANGUAGE_CONFIG.native}
+            {props.activeLanguage === LANGUAGE_CONFIG.native
+              ? WORDS_CONFIG.NATIVE_LANGUAGE.native
+              : props.activeLanguage === LANGUAGE_CONFIG.foreign
+              ? WORDS_CONFIG.NATIVE_LANGUAGE.foreign
+              : WORDS_CONFIG.NATIVE_LANGUAGE.additional}
           </MenuItem>
           <MenuItem value={LANGUAGE_CONFIG.additional}>
-            {LANGUAGE_CONFIG.additional}
+            {props.activeLanguage === LANGUAGE_CONFIG.native
+              ? WORDS_CONFIG.ADDITIONAL_LANGUAGE.native
+              : props.activeLanguage === LANGUAGE_CONFIG.foreign
+              ? WORDS_CONFIG.ADDITIONAL_LANGUAGE.foreign
+              : WORDS_CONFIG.ADDITIONAL_LANGUAGE.additional}
           </MenuItem>
         </Select>
         {!props.authStore.isAuthorized ? (

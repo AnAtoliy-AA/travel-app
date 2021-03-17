@@ -105,4 +105,29 @@ export const WORDS_CONFIG = {
     native: "Напишите свой пароль:",
     additional: "Напішыце тут свой пароль:",
   },
+  HIDE_MENU: {
+    foreign: "Hide menu",
+    native: "Скрыть меню",
+    additional: "Схаваць меню",
+  },
+  SHOW_MENU: {
+    foreign: "Show menu",
+    native: "Показать меню",
+    additional: "Паказаць меню",
+  },
+  FOREIGN_LANGUAGE: {
+    foreign: "English",
+    native: "Английский",
+    additional: "Англійская",
+  },
+  NATIVE_LANGUAGE: {
+    foreign: "Russhian",
+    native: "Русский",
+    additional: "Руская",
+  },
+  ADDITIONAL_LANGUAGE: {
+    foreign: "Belorusian",
+    native: "Белорусский",
+    additional: "Беларуская",
+  },
 };
