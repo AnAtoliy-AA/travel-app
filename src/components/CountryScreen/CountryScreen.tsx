@@ -1,39 +1,52 @@
 import "./CountryScreen.scss";
 
 import {
-  Box,
   Button,
+  ButtonGroup,
   Container,
-  Grid,
-  Icon,
   Typography,
-} from "@material-ui/core";
+} from '@material-ui/core';
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
 
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import CarouselLists from "../CarouselLists/CarouselLists";
-import { Country } from "../../shared/interfaces";
-import Map from "../Map/Map";
-import { NavLink } from "react-router-dom";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import React from "react";
-import StopIcon from "@material-ui/icons/Stop";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import Widget from "../Widget/Widget";
-import { connect } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
-import { updateCountryMark } from "./../../redux/countryList-reducer";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import CarouselLists from '../CarouselLists/CarouselLists';
+import { Country } from '../../shared/interfaces';
+import Map from '../Map/Map';
+import { NavLink } from 'react-router-dom';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import React from 'react';
+import StopIcon from '@material-ui/icons/Stop';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
+import Widget from '../Widget/Widget';
+import { connect } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
+import { updateCountryMark } from './../../redux/countryList-reducer';
 
 const styles = {
   capital: {
     justifySelf: "start",
     paddingTop: "8px",
   },
-  country: {
-    justifySelf: "end",
-  },
 };
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+  btnGroup: {
+    gridRow: '2 / 3',
+    gridColumn: '2 / 3',
+    alignSelf: 'center',
+    alignItems: 'baseline',
+  },
+}));
 const CountryScreen: React.FC = (props: any) => {
+  const classes = useStyles();
+
   const activeCountryInfo =
     props.activeCountry.countryFullInfo.countryInfo[
       props.activeLanguage.activeLanguage
@@ -60,7 +73,7 @@ const CountryScreen: React.FC = (props: any) => {
   return (
     <Container maxWidth="xl">
       <div className="CountryScreen">
-        <div className="CountryScreen__name" style={styles.country}>
+        <div className="CountryScreen__name">
           <Typography variant="h4" component="h2">
             {activeCountryInfo.countryName},
           </Typography>
@@ -70,21 +83,20 @@ const CountryScreen: React.FC = (props: any) => {
             {activeCountryInfo.capital}
           </Typography>
         </div>
-        <div className="CountryScreen__speack">
-          <Button
+        <div className={[classes.root, classes.btnGroup].join(' ')}>
+          <ButtonGroup
+            size="small"
             variant="contained"
             color="primary"
-            size="small"
-            onClick={handleStartSpeaking}
-            startIcon={<PlayArrowIcon />}
-          ></Button>
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            onClick={handleStopSpeaking}
-            startIcon={<StopIcon />}
-          ></Button>
+            aria-label="small contained primary button group"
+          >
+            <Button onClick={handleStartSpeaking}>
+              <PlayArrowIcon />
+            </Button>
+            <Button onClick={handleStopSpeaking}>
+              <StopIcon />
+            </Button>
+          </ButtonGroup>
         </div>
         <Widget
           country={activeCountryInfo.countryName}
