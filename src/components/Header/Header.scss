@@ -42,6 +42,9 @@
 }
 
 @media screen and (max-width: 767px) {
+    .header {
+        height: 5vh;
+    }
     .menu__button {
         display: block;
     }
