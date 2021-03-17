@@ -90,4 +90,44 @@ export const WORDS_CONFIG = {
     native: "Выбрать язык:",
     additional: "Выберыце мову:",
   },
+  WRIGHT_NAME: {
+    foreign: "Write your name heare:",
+    native: "Напишите свое имя здесь:",
+    additional: "Напішыце сваё імя тут:",
+  },
+  WRIGHT_EMAIL: {
+    foreign: "Write your email heare:",
+    native: "Напишите свою эл. почту:",
+    additional: "Напішыце вашу эл. пошту:",
+  },
+  WRIGHT_PASSWORD: {
+    foreign: "Write your password here:",
+    native: "Напишите свой пароль:",
+    additional: "Напішыце тут свой пароль:",
+  },
+  HIDE_MENU: {
+    foreign: "Hide menu",
+    native: "Скрыть меню",
+    additional: "Схаваць меню",
+  },
+  SHOW_MENU: {
+    foreign: "Show menu",
+    native: "Показать меню",
+    additional: "Паказаць меню",
+  },
+  FOREIGN_LANGUAGE: {
+    foreign: "English",
+    native: "Английский",
+    additional: "Англійская",
+  },
+  NATIVE_LANGUAGE: {
+    foreign: "Russhian",
+    native: "Русский",
+    additional: "Руская",
+  },
+  ADDITIONAL_LANGUAGE: {
+    foreign: "Belorusian",
+    native: "Белорусский",
+    additional: "Беларуская",
+  },
 };

@@ -1,5 +1,15 @@
 import './CountryScreen.scss';
 
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Icon,
+  Typography,
+} from '@material-ui/core';
+
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import CarouselLists from '../CarouselLists/CarouselLists';
 import { Country } from '../../shared/interfaces';
 import Map from '../Map/Map';
@@ -10,18 +20,8 @@ import StopIcon from '@material-ui/icons/Stop';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import Widget from '../Widget/Widget';
 import { connect } from 'react-redux';
-import { updateCountryMark } from './../../redux/countryList-reducer';
-
-import {
-  Button,
-  Typography,
-  Icon,
-  Box,
-  Container,
-  Grid,
-} from '@material-ui/core';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
+import { updateCountryMark } from './../../redux/countryList-reducer';
 
 const styles = {
   capital: {
@@ -114,20 +114,6 @@ const CountryScreen: React.FC = (props: any) => {
             RETURN BACK
           </Button>
         </NavLink>
-        <button
-          className="CountryScreen__btn"
-          onClick={() =>
-            props.updateCountryMark(
-              props.activeCountry._id,
-              props.authStore.userData.token,
-              '4',
-              props.authStore.userData.userId,
-              props.authStore.userData.userName
-            )
-          }
-        >
-          Set 4
-        </button>
       </div>
     </Container>
   );
