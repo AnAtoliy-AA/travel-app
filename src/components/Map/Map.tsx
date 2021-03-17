@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import './Map.scss';
 import * as dataBelarusGeo from '../../services/geoData/belarus.geo.json';
 import * as dataBelgiumGeo from '../../services/geoData/belgium.geo.json';
@@ -9,6 +9,14 @@ import * as dataRussiaGeo from '../../services/geoData/russia.geo.json';
 import * as dataItalyGeo from '../../services/geoData/italy.geo.json';
 import * as dataSpainGeo from '../../services/geoData/spain.geo.json';
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
+
+import { Button, Icon } from '@material-ui/core';
+import FullscreenIcon from '@material-ui/icons/Fullscreen';
+import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { CircularProgress } from '@material-ui/core';
+import Fullscreen from '@material-ui/icons/Fullscreen';
 
 type TProps = {
   capitalEng: string;
@@ -24,6 +32,8 @@ const Map: React.FC<TProps> = ({
   coordsCapital = [53.9, 27.5667],
 }) => {
   const [mapCountries, setMapCountries] = useState<any>([]);
+  const [loadingMap, setLoadingMap] = useState<boolean>(false);
+  const [isFull, setFullscreen] = useState<boolean>(false);
 
   useEffect(() => {
     const getJsonData = (c: string) => {
@@ -60,40 +70,64 @@ const Map: React.FC<TProps> = ({
     };
 
     getJsonData(capitalEng);
+    setLoadingMap(true);
   }, [capitalEng]);
 
-  return (
-    <div className="map">
-      <MapContainer
-        center={coordsCapital}
-        zoom={5}
-        maxZoom={22}
-        attributionControl={true}
-        zoomControl={true}
-        // doubleClickZoom={true}
-        // scrollWheelZoom={true}
-        scrollWheelZoom={false}
-        dragging={true}
-        // animate={true}
-        easeLinearity={0.35}
-      >
-        {/* <TileLayer
-          url="https://api.mapbox.com/styles/v1/burik84/ckmaza88n3x0x17qi3guhgbcv.html?fresh=true&title=view&access_token=pk.eyJ1IjoiYnVyaWs4NCIsImEiOiJja21heTJlcWYxMjN2MndwaDd1c3k2MnM3In0.JE0gwAcAaLTj1qYLZueUOA"
-          attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
-        /> */}
+  const handleScreen = () => {
+    if (!isFull) {
+      setFullscreen(true);
+    } else {
+      setFullscreen(false);
+    }
+  };
+  const classMap = () => {
+    return isFull ? 'map map__fullscreen' : 'map';
+  };
 
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-        <GeoJSON data={mapCountries} />
-        <Marker position={coordsCapital}>
-          <Popup>
-            {capital} ({country})
-          </Popup>
-        </Marker>
-      </MapContainer>
-    </div>
+  return (
+    <Fragment>
+      {!loadingMap && <CircularProgress />}
+      {loadingMap && (
+        <div className={classMap()}>
+          <Button
+            size="small"
+            color="primary"
+            className="map__screen"
+            onClick={handleScreen}
+          >
+            {!isFull && <Fullscreen />}
+            {isFull && <FullscreenExitIcon />}
+          </Button>
+
+          <MapContainer
+            center={coordsCapital}
+            zoom={5}
+            maxZoom={22}
+            attributionControl={true}
+            zoomControl={true}
+            scrollWheelZoom={false}
+            dragging={true}
+            easeLinearity={0.35}
+          >
+            {/* <TileLayer
+    url="https://api.mapbox.com/styles/v1/burik84/ckmaza88n3x0x17qi3guhgbcv.html?fresh=true&title=view&access_token=pk.eyJ1IjoiYnVyaWs4NCIsImEiOiJja21heTJlcWYxMjN2MndwaDd1c3k2MnM3In0.JE0gwAcAaLTj1qYLZueUOA"
+    attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+  /> */}
+
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <GeoJSON data={mapCountries} />
+            <Marker position={coordsCapital}>
+              <Popup>
+                {capital} ({country})
+              </Popup>
+            </Marker>
+          </MapContainer>
+        </div>
+      )}
+    </Fragment>
   );
 };
 
