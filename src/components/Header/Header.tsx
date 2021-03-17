@@ -1,33 +1,24 @@
 import "./Header.scss";
 
-import { Button, InputLabel, MenuItem, Select } from "@material-ui/core";
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
 import { NavLink, Route } from "react-router-dom";
 import React, { useState } from "react";
 
 import Alert from "@material-ui/lab/Alert";
+import { Button } from "@material-ui/core";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
-import FormatLineSpacingIcon from '@material-ui/icons/FormatLineSpacing';
+import FormatLineSpacingIcon from "@material-ui/icons/FormatLineSpacing";
+import LanguageSelect from "./LanguageSelect/LanguageSelect";
 import SearchForm from "./SearchForm/SearchForm";
 import { TRAVEL_APP_API } from "../../services/travel-app-api";
 import { connect } from "react-redux";
 import logo from "./../../assets/images/logo.jpg";
 import { logout } from "../../redux/auth-reducer";
-import { setActiveLanguage } from "../../redux/language-reducer";
 import { setSearchFormTerm } from "../../redux/searchForm-reducer";
 
 const Header: React.FC = (props: any) => {
   const [isMenuHidden, setIsMenuHidden] = useState(true);
-  const [activeLanguageInSelect, setActiveLanguageInSelect] = useState(
-    props.activeLanguage
-  );
 
-  const handleUpdatActiveLanguageInSelect = (
-    e: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
-  ) => {
-    setActiveLanguageInSelect(e.target.value);
-    props.setActiveLanguage(e.target.value);
-  };
   const toggleMenu = () => {
     setIsMenuHidden(!isMenuHidden);
   };
@@ -103,46 +94,12 @@ const Header: React.FC = (props: any) => {
               WORDS_CONFIG.AUTH_FAIL.additional}
           </Alert>
         )}
-        <InputLabel
-          id="demo-simple-select-filled-label"
-          className="background__layout"
-        >
-          {props.activeLanguage === LANGUAGE_CONFIG.native
-            ? WORDS_CONFIG.SELECT_LANGUAGE.native
-            : props.activeLanguage === LANGUAGE_CONFIG.foreign
-            ? WORDS_CONFIG.SELECT_LANGUAGE.foreign
-            : WORDS_CONFIG.SELECT_LANGUAGE.additional}
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-filled-label"
-          id="demo-simple-select-filled"
-          name="fieldSize"
-          value={activeLanguageInSelect}
-          className="background__layout"
-          onChange={(e) => handleUpdatActiveLanguageInSelect(e)}
-        >
-          <MenuItem value={LANGUAGE_CONFIG.foreign}>
-            {props.activeLanguage === LANGUAGE_CONFIG.native
-              ? WORDS_CONFIG.FOREIGN_LANGUAGE.native
-              : props.activeLanguage === LANGUAGE_CONFIG.foreign
-              ? WORDS_CONFIG.FOREIGN_LANGUAGE.foreign
-              : WORDS_CONFIG.FOREIGN_LANGUAGE.additional}
-          </MenuItem>
-          <MenuItem value={LANGUAGE_CONFIG.native}>
-            {props.activeLanguage === LANGUAGE_CONFIG.native
-              ? WORDS_CONFIG.NATIVE_LANGUAGE.native
-              : props.activeLanguage === LANGUAGE_CONFIG.foreign
-              ? WORDS_CONFIG.NATIVE_LANGUAGE.foreign
-              : WORDS_CONFIG.NATIVE_LANGUAGE.additional}
-          </MenuItem>
-          <MenuItem value={LANGUAGE_CONFIG.additional}>
-            {props.activeLanguage === LANGUAGE_CONFIG.native
-              ? WORDS_CONFIG.ADDITIONAL_LANGUAGE.native
-              : props.activeLanguage === LANGUAGE_CONFIG.foreign
-              ? WORDS_CONFIG.ADDITIONAL_LANGUAGE.foreign
-              : WORDS_CONFIG.ADDITIONAL_LANGUAGE.additional}
-          </MenuItem>
-        </Select>
+        <Route exact path="/">
+          <LanguageSelect />
+        </Route>
+        <Route exact path="/country">
+          <LanguageSelect />
+        </Route>
         {!props.authStore.isAuthorized ? (
           <div className="header-nav">
             <NavLink to="/login" style={{ textDecoration: "none" }}>
@@ -215,7 +172,6 @@ let mapStateToProps = (state: {
 };
 
 export default connect(mapStateToProps, {
-  setActiveLanguage,
   setSearchFormTerm,
   logout,
 })(Header);

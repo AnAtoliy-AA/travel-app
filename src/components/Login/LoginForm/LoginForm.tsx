@@ -35,7 +35,6 @@ const LoginForm = (props: any) => {
             name="email"
             error={errors.email && true}
             autoComplete="false"
-           
             label={
               props.activeLanguage === LANGUAGE_CONFIG.native
                 ? WORDS_CONFIG.WRIGHT_EMAIL.native
