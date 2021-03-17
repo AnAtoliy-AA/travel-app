@@ -2,11 +2,11 @@ import "./RegisterForm.scss";
 
 import { Button, TextField } from "@material-ui/core";
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../../shared/words-config";
-import { NavLink, Redirect } from "react-router-dom";
 import React, { useState } from "react";
 
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
+import { NavLink } from "react-router-dom";
 import { User } from "../../../shared/interfaces";
 import { connect } from "react-redux";
 import { register } from "./../../../redux/auth-reducer";
@@ -45,7 +45,7 @@ export const RegisterForm = (props: any) => {
             inputRef={register({ required: true })}
           />
           {errors.email && errors.email.type === "required" && (
-            <div className="error">Your must enter namel!.</div>
+            <div className="error">Your must enter name!.</div>
           )}
           </div>
           <div className="field">

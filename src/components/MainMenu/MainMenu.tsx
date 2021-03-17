@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   getAllCountriesInfo,
   setActiveCountry,
@@ -25,7 +25,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 300,
+    maxHeight: 280,
     cursor: "pointer",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
     margin: "1vh 1vw 2vh",

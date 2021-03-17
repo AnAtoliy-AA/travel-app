@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Alert from "@material-ui/lab/Alert";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
 import SearchForm from "./SearchForm/SearchForm";
-import { TRAVEL_APP_API } from "../../api/travel-app-api";
+import { TRAVEL_APP_API } from "../../services/travel-app-api";
 import { connect } from "react-redux";
 import logo from "./../../assets/images/logo.jpg";
 import { logout } from "../../redux/auth-reducer";

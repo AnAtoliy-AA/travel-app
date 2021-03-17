@@ -1,6 +1,4 @@
-import { Country } from "../shared/interfaces"
-import { defaultcountryInfoList } from "./countryInfoList"
-import { travelAppApi } from "../api/travel-app-api"
+import { travelAppApi } from "../services/travel-app-api"
 
 const ACTION_CONST = {
     SET_USER_DATA: 'SET_USER_DATA',
