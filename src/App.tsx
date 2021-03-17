@@ -2,6 +2,7 @@ import "./App.scss";
 
 import { BrowserRouter, Route } from "react-router-dom";
 
+import AttractionScreen from "./components/AttractionScreen/AttractionScreen";
 import CountryScreen from "./components/CountryScreen/CountryScreen";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path="/country">
             <CountryScreen />
+          </Route>
+          <Route exact path="/attraction">
+            <AttractionScreen />
           </Route>
           <Footer />
         </BrowserRouter>
