@@ -2,11 +2,12 @@ import "./RegisterForm.scss";
 
 import { Button, TextField } from "@material-ui/core";
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../../shared/words-config";
-import { NavLink, Redirect } from "react-router-dom";
 import React, { useState } from "react";
 
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { NavLink } from "react-router-dom";
 import { User } from "../../../shared/interfaces";
 import { connect } from "react-redux";
 import { register } from "./../../../redux/auth-reducer";
@@ -25,14 +26,15 @@ export const RegisterForm = (props: any) => {
     }
 }
   return (
-    <div className="register">
+    <div className="RegisterForm">
       {props.activeLanguage === LANGUAGE_CONFIG.native &&
         WORDS_CONFIG.REGISTER_BUTTON.native}
       {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
         WORDS_CONFIG.REGISTER_BUTTON.foreign}
       {props.activeLanguage === LANGUAGE_CONFIG.additional &&
         WORDS_CONFIG.REGISTER_BUTTON.additional}
-      <form onSubmit={handleSubmit(onSubmit)}>
+        {props.authStore.isLoading && <LinearProgress />}
+      <form onSubmit={handleSubmit(onSubmit)} className="auth__form">
         <div className="field">
           <TextField
             id="userName"
@@ -40,12 +42,18 @@ export const RegisterForm = (props: any) => {
             name="userName"
             error={errors.email && true}
             autoComplete="false"
-            label="Write your name here"
+            label={
+              props.activeLanguage === LANGUAGE_CONFIG.native
+                ? WORDS_CONFIG.WRIGHT_NAME.native
+                : props.activeLanguage === LANGUAGE_CONFIG.foreign
+                ? WORDS_CONFIG.WRIGHT_NAME.foreign
+                : WORDS_CONFIG.WRIGHT_NAME.additional
+            }
             variant="outlined"
             inputRef={register({ required: true })}
           />
           {errors.email && errors.email.type === "required" && (
-            <div className="error">Your must enter namel!.</div>
+            <div className="error">Your must enter name!.</div>
           )}
           </div>
           <div className="field">
@@ -55,7 +63,13 @@ export const RegisterForm = (props: any) => {
             name="email"
             error={errors.email && true}
             autoComplete="false"
-            label="Write your email here"
+            label={
+              props.activeLanguage === LANGUAGE_CONFIG.native
+                ? WORDS_CONFIG.WRIGHT_EMAIL.native
+                : props.activeLanguage === LANGUAGE_CONFIG.foreign
+                ? WORDS_CONFIG.WRIGHT_EMAIL.foreign
+                : WORDS_CONFIG.WRIGHT_EMAIL.additional
+            }
             variant="outlined"
             inputRef={register({ required: true })}
           />
@@ -71,7 +85,13 @@ export const RegisterForm = (props: any) => {
             type="password"
             error={errors.password && true}
             autoComplete="false"
-            label="Write your password here"
+            label={
+              props.activeLanguage === LANGUAGE_CONFIG.native
+                ? WORDS_CONFIG.WRIGHT_PASSWORD.native
+                : props.activeLanguage === LANGUAGE_CONFIG.foreign
+                ? WORDS_CONFIG.WRIGHT_PASSWORD.foreign
+                : WORDS_CONFIG.WRIGHT_PASSWORD.additional
+            }
             variant="outlined"
             inputRef={register({ required: true })}
           />

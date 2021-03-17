@@ -1,28 +1,28 @@
 import './CountryScreen.scss';
 
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Icon,
+  Typography,
+  ButtonGroup,
+} from '@material-ui/core';
+
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import StopIcon from '@material-ui/icons/Stop';
 import CarouselLists from '../CarouselLists/CarouselLists';
 import { Country } from '../../shared/interfaces';
 import Map from '../Map/Map';
 import { NavLink } from 'react-router-dom';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import React from 'react';
-import StopIcon from '@material-ui/icons/Stop';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
 import Widget from '../Widget/Widget';
 import { connect } from 'react-redux';
-import { updateCountryMark } from './../../redux/countryList-reducer';
-
-import {
-  Button,
-  ButtonGroup,
-  Typography,
-  Icon,
-  Box,
-  Container,
-  Grid,
-} from '@material-ui/core';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
+import { updateCountryMark } from './../../redux/countryList-reducer';
 
 const styles = {
   capital: {
@@ -88,22 +88,6 @@ const CountryScreen: React.FC = (props: any) => {
             {activeCountryInfo.capital}
           </Typography>
         </div>
-        {/* <div className="CountryScreen__speack">
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            onClick={handleStartSpeaking}
-            startIcon={<PlayArrowIcon />}
-          ></Button>
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            onClick={handleStopSpeaking}
-            startIcon={<StopIcon />}
-          ></Button>
-        </div> */}
         <div className={[classes.root, classes.btnGroup].join(' ')}>
           <ButtonGroup
             size="small"
@@ -148,20 +132,6 @@ const CountryScreen: React.FC = (props: any) => {
             RETURN BACK
           </Button>
         </NavLink>
-        <button
-          className="CountryScreen__btn"
-          onClick={() =>
-            props.updateCountryMark(
-              props.activeCountry._id,
-              props.authStore.userData.token,
-              '4',
-              props.authStore.userData.userId,
-              props.authStore.userData.userName
-            )
-          }
-        >
-          Set 4
-        </button>
       </div>
     </Container>
   );

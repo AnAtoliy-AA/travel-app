@@ -1,5 +1,6 @@
 .CountryScreen {
     padding-top: 10vh;
+    min-height: 80vh;
     display: grid;
     grid-template-rows: 40px 40px 200px 300px 40px;
     grid-template-columns: repeat(6, minmax(100px, 3fr));

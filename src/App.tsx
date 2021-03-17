@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import { BrowserRouter, Redirect, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import CountryScreen from "./components/CountryScreen/CountryScreen";
 import Footer from "./components/Footer/Footer";
