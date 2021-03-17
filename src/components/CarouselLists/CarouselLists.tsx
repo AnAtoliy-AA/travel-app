@@ -18,7 +18,7 @@ import {
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 280,
+    maxWidth: 260,
     cursor: 'pointer',
   },
   desc: {
@@ -41,9 +41,27 @@ const CarouselLists: React.FC<TProps> = ({ attractions }) => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 750,
+    speed: 1000,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          // initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const renderSlides = () =>
