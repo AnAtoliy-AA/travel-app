@@ -1,0 +1,11 @@
+.country__player{
+  // grid-row: 3/4;
+  // grid-column: 4/6;
+  grid-row: span 1;
+  grid-column: span 2;
+}
+@media (max-width: 768px) {
+  .country__player{
+    display: none;
+  }
+ }

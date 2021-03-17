@@ -1,0 +1,62 @@
+.widget-weather {
+  // grid-row-start: 1;
+  // grid-row-end: 3;
+  // grid-column-start: 3;
+  // grid-column-end: 5;
+  grid-row: span 2;
+  grid-column: span 3;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.widget-currancy {
+  grid-row: span 2;
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.widget-locale {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  justify-self: end;
+  align-self: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+  .CountryScreen__about {
+    grid-row: span 1;
+    grid-column: span 5;
+  }
+
+  .widget-weather {
+    // grid-column: span 2;
+  }
+
+  .widget-currancy {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .CountryScreen__about {
+    grid-row: span 1;
+    grid-column: span 5;
+  }
+
+  .widget-weather {
+    display: none;
+  }
+
+  .widget-locale {
+    grid-column: 4/6;
+  }
+}
