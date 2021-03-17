@@ -8,7 +8,7 @@ import {
   CurrencyDescritpion,
 } from '../../shared/interfaces';
 
-import { Typography } from '@material-ui/core';
+import { Typography, CircularProgress } from '@material-ui/core';
 
 type TProps = {
   capital: string;
@@ -230,15 +230,15 @@ const Widget: React.FC<TProps> = ({
   return (
     <React.Fragment>
       <div className="widget-weather">
-        {!loadingWeather && <p>Loading...</p>}
+        {!loadingWeather && <CircularProgress />}
         {loadingWeather && widgetWeather()}
       </div>
       <div className="widget-currancy">
-        {!loadingCurrancy && <p>Loading...</p>}
+        {!loadingCurrancy && <CircularProgress />}
         {loadingCurrancy && widgetCurrancy()}
       </div>
       <div className="widget-locale">
-        {!loadingClock && <p>Loading...</p>}
+        {!loadingClock && <CircularProgress />}
         {loadingClock && widgetClock()}
       </div>
     </React.Fragment>
