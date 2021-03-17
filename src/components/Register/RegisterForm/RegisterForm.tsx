@@ -6,6 +6,7 @@ import React, { useState } from "react";
 
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import { NavLink } from "react-router-dom";
 import { User } from "../../../shared/interfaces";
 import { connect } from "react-redux";
@@ -25,14 +26,15 @@ export const RegisterForm = (props: any) => {
     }
 }
   return (
-    <div className="register">
+    <div className="RegisterForm">
       {props.activeLanguage === LANGUAGE_CONFIG.native &&
         WORDS_CONFIG.REGISTER_BUTTON.native}
       {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
         WORDS_CONFIG.REGISTER_BUTTON.foreign}
       {props.activeLanguage === LANGUAGE_CONFIG.additional &&
         WORDS_CONFIG.REGISTER_BUTTON.additional}
-      <form onSubmit={handleSubmit(onSubmit)}>
+        {props.authStore.isLoading && <LinearProgress />}
+      <form onSubmit={handleSubmit(onSubmit)} className="auth__form">
         <div className="field">
           <TextField
             id="userName"

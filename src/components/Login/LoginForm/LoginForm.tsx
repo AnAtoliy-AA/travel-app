@@ -2,11 +2,12 @@ import "./LoginForm.scss";
 
 import { Button, TextField } from "@material-ui/core";
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../../shared/words-config";
-import React, { useState } from "react";
 
 import BackspaceIcon from "@material-ui/icons/Backspace";
 import ExitToAppTwoToneIcon from "@material-ui/icons/ExitToAppTwoTone";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import { NavLink } from "react-router-dom";
+import React from "react";
 import { User } from "../../../shared/interfaces";
 import { connect } from "react-redux";
 import { login } from "./../../../redux/auth-reducer";
@@ -18,14 +19,15 @@ const LoginForm = (props: any) => {
     props.login(data.email, data.password);
   };
   return (
-    <div>
+    <div className="LoginForm">
       {props.activeLanguage === LANGUAGE_CONFIG.native &&
         WORDS_CONFIG.LOGIN_BUTTON.native}
       {props.activeLanguage === LANGUAGE_CONFIG.foreign &&
         WORDS_CONFIG.LOGIN_BUTTON.foreign}
       {props.activeLanguage === LANGUAGE_CONFIG.additional &&
         WORDS_CONFIG.LOGIN_BUTTON.additional}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {props.authStore.isLoading && <LinearProgress />}
+      <form onSubmit={handleSubmit(onSubmit)} className="auth__form">
         <div className="field">
           <TextField
             id="name"
@@ -72,7 +74,7 @@ const LoginForm = (props: any) => {
             WORDS_CONFIG.LOGIN_BUTTON.additional}
         </Button>
       </form>
-      <NavLink to="/" style={{ textDecoration: "none" }}>
+      <NavLink to="/" className="auth__return">
         <Button
           variant="contained"
           color="primary"

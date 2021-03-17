@@ -1,8 +1,18 @@
-.LoginForm {}
-.field {
-    margin: 5vh;
-}
+.LoginForm {
 
-.error-message {
-    margin-top: 5vh;
+    .auth__form {
+        margin-bottom: 5vh;
+    }
+    .field {
+        margin: 5vh;
+        
+    }
+
+    .auth__return {
+        text-decoration: none;
+    }
+
+    .error-message {
+        margin-top: 5vh;
+    }
 }
