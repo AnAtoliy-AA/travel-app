@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
 
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import BackspaceIcon from "@material-ui/icons/Backspace";
 import CarouselLists from '../CarouselLists/CarouselLists';
 import { Country } from '../../shared/interfaces';
 import Map from '../Map/Map';
@@ -123,7 +123,10 @@ const CountryScreen: React.FC = (props: any) => {
           style={{ textDecoration: "none" }}
           className="CountryScreen__link"
         >
-          <Button size="large" color="primary" endIcon={<ArrowBackIcon />}>
+          <Button variant="contained"
+          color="primary"
+          size="small"
+          startIcon={<BackspaceIcon />}>
             {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.native &&
               WORDS_CONFIG.BACK_BUTTON.native}
             {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.foreign &&
