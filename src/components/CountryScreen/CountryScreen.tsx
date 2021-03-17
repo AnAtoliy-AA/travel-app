@@ -29,9 +29,9 @@ const styles = {
     justifySelf: 'start',
     paddingTop: '8px',
   },
-  country: {
-    justifySelf: 'end',
-  },
+  // country: {
+  //   justifySelf: 'end',
+  // },
 };
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,7 +78,7 @@ const CountryScreen: React.FC = (props: any) => {
   return (
     <Container maxWidth="xl">
       <div className="CountryScreen">
-        <div className="CountryScreen__name" style={styles.country}>
+        <div className="CountryScreen__name">
           <Typography variant="h4" component="h2">
             {activeCountryInfo.countryName},
           </Typography>
