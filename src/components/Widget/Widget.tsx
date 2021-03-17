@@ -218,8 +218,11 @@ const Widget: React.FC<TProps> = ({
     const { month, day, year, hour, min, sec } = clockData;
     return (
       <Fragment>
-        <Typography variant="body1" color="textPrimary" component="p">
-          {day} - {month} - {year} {hour} : {min} : {sec}
+        <Typography variant="body2" gutterBottom>
+          {day} - {month} - {year}
+        </Typography>
+        <Typography variant="body2" gutterBottom>
+          {hour}:{min}:{sec}
         </Typography>
       </Fragment>
     );

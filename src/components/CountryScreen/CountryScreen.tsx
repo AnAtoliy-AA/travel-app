@@ -14,6 +14,7 @@ import { updateCountryMark } from './../../redux/countryList-reducer';
 
 import {
   Button,
+  ButtonGroup,
   Typography,
   Icon,
   Box,
@@ -32,7 +33,25 @@ const styles = {
     justifySelf: 'end',
   },
 };
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+  btnGroup: {
+    gridRow: '2 / 3',
+    gridColumn: '2 / 3',
+    alignSelf: 'center',
+    alignItems: 'baseline',
+  },
+}));
 const CountryScreen: React.FC = (props: any) => {
+  const classes = useStyles();
+
   const activeCountryInfo =
     props.activeCountry.countryFullInfo.countryInfo[
       props.activeLanguage.activeLanguage
@@ -69,7 +88,7 @@ const CountryScreen: React.FC = (props: any) => {
             {activeCountryInfo.capital}
           </Typography>
         </div>
-        <div className="CountryScreen__speack">
+        {/* <div className="CountryScreen__speack">
           <Button
             variant="contained"
             color="primary"
@@ -84,6 +103,21 @@ const CountryScreen: React.FC = (props: any) => {
             onClick={handleStopSpeaking}
             startIcon={<StopIcon />}
           ></Button>
+        </div> */}
+        <div className={[classes.root, classes.btnGroup].join(' ')}>
+          <ButtonGroup
+            size="small"
+            variant="contained"
+            color="primary"
+            aria-label="small contained primary button group"
+          >
+            <Button onClick={handleStartSpeaking}>
+              <PlayArrowIcon />
+            </Button>
+            <Button onClick={handleStopSpeaking}>
+              <StopIcon />
+            </Button>
+          </ButtonGroup>
         </div>
         <Widget
           country={activeCountryInfo.countryName}
