@@ -1,4 +1,4 @@
-import './CountryScreen.scss';
+import "./CountryScreen.scss";
 
 import {
   Box,
@@ -7,29 +7,30 @@ import {
   Grid,
   Icon,
   Typography,
-} from '@material-ui/core';
+} from "@material-ui/core";
+import { LANGUAGE_CONFIG, WORDS_CONFIG } from "../../shared/words-config";
 
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import CarouselLists from '../CarouselLists/CarouselLists';
-import { Country } from '../../shared/interfaces';
-import Map from '../Map/Map';
-import { NavLink } from 'react-router-dom';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import React from 'react';
-import StopIcon from '@material-ui/icons/Stop';
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import Widget from '../Widget/Widget';
-import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
-import { updateCountryMark } from './../../redux/countryList-reducer';
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import CarouselLists from "../CarouselLists/CarouselLists";
+import { Country } from "../../shared/interfaces";
+import Map from "../Map/Map";
+import { NavLink } from "react-router-dom";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import React from "react";
+import StopIcon from "@material-ui/icons/Stop";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import Widget from "../Widget/Widget";
+import { connect } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import { updateCountryMark } from "./../../redux/countryList-reducer";
 
 const styles = {
   capital: {
-    justifySelf: 'start',
-    paddingTop: '8px',
+    justifySelf: "start",
+    paddingTop: "8px",
   },
   country: {
-    justifySelf: 'end',
+    justifySelf: "end",
   },
 };
 const CountryScreen: React.FC = (props: any) => {
@@ -107,11 +108,16 @@ const CountryScreen: React.FC = (props: any) => {
         <CarouselLists attractions={activeCountryInfo.attractions} />
         <NavLink
           to="/"
-          style={{ textDecoration: 'none' }}
+          style={{ textDecoration: "none" }}
           className="CountryScreen__link"
         >
           <Button size="large" color="primary" endIcon={<ArrowBackIcon />}>
-            RETURN BACK
+            {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.native &&
+              WORDS_CONFIG.BACK_BUTTON.native}
+            {props.activeLanguage.activeLanguage === LANGUAGE_CONFIG.foreign &&
+              WORDS_CONFIG.BACK_BUTTON.foreign}
+            {props.activeLanguage.activeLanguage ===
+              LANGUAGE_CONFIG.additional && WORDS_CONFIG.BACK_BUTTON.additional}
           </Button>
         </NavLink>
       </div>

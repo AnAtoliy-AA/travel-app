@@ -1,0 +1,17 @@
+.AttractionScreen {
+    padding-top: 15vh;
+    min-height: 70vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    .attraction__image {
+        max-height: 60vh;
+        max-width: 60vw;
+    }
+
+    .attraction__return {
+        margin-bottom: 10vh;
+    }
+}
